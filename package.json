@@ -9,7 +9,8 @@
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public",
-        "lint": "eslint --ext .tsx,ts src/ --fix"
+        "lint": "eslint --ext .tsx,ts src/ --fix",
+        "build-type": "pnpify tsc  -p tsconfig.json --declaration --emitDeclarationOnly"
     },
     "dependencies": {
         "react": "^18.2.0",
