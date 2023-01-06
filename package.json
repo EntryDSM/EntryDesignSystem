@@ -2,22 +2,22 @@
     "name": "entry_design_system",
     "version": "0.1.0",
     "private": true,
+    "main": "./build/index.js",
+    "type": "module",
+    "types": "./build/index.d.ts",
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public",
+        "start": "start-storybook -p 6006 -s public",
+        "build": "yarn build-clean & yarn build-type & yarn build-bundle",
         "lint": "eslint --ext .tsx,ts src/ --fix",
-        "build-type": "pnpify tsc  -p tsconfig.json --declaration --emitDeclarationOnly"
+        "build-type": "pnpify tsc  -p tsconfig.json --declaration --emitDeclarationOnly",
+        "build-bundle": "node ./esbuild.config.js",
+        "build-storybook": "build-storybook -s public",
+        "build-clean": "rm -rf ./build",
+        "pre-release": "yarn pack"
     },
     "dependencies": {
         "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-scripts": "5.0.1",
-        "typescript": "^4.9.4",
-        "web-vitals": "^2.1.0"
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@mdx-js/react": "^1.6.22",
@@ -32,17 +32,16 @@
         "@storybook/preset-create-react-app": "^4.1.2",
         "@storybook/react": "^6.5.15",
         "@storybook/testing-library": "^0.0.13",
-        "@testing-library/jest-dom": "^5.14.1",
-        "@testing-library/react": "^13.0.0",
-        "@testing-library/user-event": "^13.2.1",
         "@types/jest": "^27.0.1",
         "@types/node": "^16.7.13",
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
         "@typescript-eslint/eslint-plugin": "latest",
         "@typescript-eslint/parser": "latest",
+        "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
         "@yarnpkg/pnpify": "^4.0.0-rc.34",
         "babel-plugin-named-exports-order": "^0.0.2",
+        "esbuild": "^0.16.14",
         "eslint": "^8.31.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-prettier": "^8.5.0",
@@ -65,17 +64,11 @@
             "prettier --check 'src/**/*.(ts|tsx)'"
         ]
     },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+    "files": [
+        "./build"
+    ],
+    "publishConfig": {
+        "access": "public"
     },
     "packageManager": "yarn@3.3.1"
 }
