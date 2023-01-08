@@ -60,5 +60,16 @@
             }
         }
     },
-    "ignorePatterns": ["build"]
+    "ignorePatterns": [
+        "build",
+        ".yarn",
+        ".github",
+        ".husky",
+        ".storybook",
+        ".pnp.cjs",
+        ".pnp.lodar.mjs",
+        "yarn.lock",
+        "lib/*",
+        "bin/*"
+    ]
 }
