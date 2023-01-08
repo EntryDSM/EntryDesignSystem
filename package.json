@@ -1,7 +1,6 @@
 {
-    "name": "entry_design_system",
+    "name": "@team-entry/design_system",
     "version": "0.1.0",
-    "private": true,
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
     "scripts": {

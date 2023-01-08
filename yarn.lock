@@ -4292,6 +4292,52 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@team-entry/design_system@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@team-entry/design_system@workspace:."
+  dependencies:
+    "@mdx-js/react": ^1.6.22
+    "@storybook/addon-actions": ^6.5.15
+    "@storybook/addon-docs": ^6.5.15
+    "@storybook/addon-essentials": ^6.5.15
+    "@storybook/addon-interactions": ^6.5.15
+    "@storybook/addon-links": ^6.5.15
+    "@storybook/builder-webpack5": ^6.5.15
+    "@storybook/manager-webpack5": ^6.5.15
+    "@storybook/node-logger": ^6.5.15
+    "@storybook/preset-create-react-app": ^4.1.2
+    "@storybook/react": ^6.5.15
+    "@storybook/testing-library": ^0.0.13
+    "@types/jest": ^27.0.1
+    "@types/node": ^16.7.13
+    "@types/react": ^18.0.0
+    "@types/react-dom": ^18.0.0
+    "@typescript-eslint/eslint-plugin": latest
+    "@typescript-eslint/parser": latest
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
+    "@yarnpkg/pnpify": ^4.0.0-rc.34
+    babel-plugin-named-exports-order: ^0.0.2
+    esbuild: ^0.16.14
+    eslint: ^8.31.0
+    eslint-config-airbnb: ^19.0.4
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-react: latest
+    eslint-plugin-storybook: ^0.6.8
+    husky: ^8.0.2
+    lint-staged: ^13.1.0
+    prettier: ^2.8.1
+    prop-types: ^15.8.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-scripts: ^5.0.1
+    typescript: ^4.9.4
+    webpack: ^5.75.0
+  languageName: unknown
+  linkType: soft
+
 "@testing-library/dom@npm:^8.3.0":
   version: 8.19.1
   resolution: "@testing-library/dom@npm:8.19.1"
@@ -9192,52 +9238,6 @@ __metadata:
   checksum: 19010dacaf0912c895ea262b4f6128574f9ccf8d4b3b65c7e8334ad0079b3706376360e28d8843ff50a78aabcb8f08f0a32dbfacdc77e47ed77ca08b713669b3
   languageName: node
   linkType: hard
-
-"entry_design_system@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "entry_design_system@workspace:."
-  dependencies:
-    "@mdx-js/react": ^1.6.22
-    "@storybook/addon-actions": ^6.5.15
-    "@storybook/addon-docs": ^6.5.15
-    "@storybook/addon-essentials": ^6.5.15
-    "@storybook/addon-interactions": ^6.5.15
-    "@storybook/addon-links": ^6.5.15
-    "@storybook/builder-webpack5": ^6.5.15
-    "@storybook/manager-webpack5": ^6.5.15
-    "@storybook/node-logger": ^6.5.15
-    "@storybook/preset-create-react-app": ^4.1.2
-    "@storybook/react": ^6.5.15
-    "@storybook/testing-library": ^0.0.13
-    "@types/jest": ^27.0.1
-    "@types/node": ^16.7.13
-    "@types/react": ^18.0.0
-    "@types/react-dom": ^18.0.0
-    "@typescript-eslint/eslint-plugin": latest
-    "@typescript-eslint/parser": latest
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
-    "@yarnpkg/pnpify": ^4.0.0-rc.34
-    babel-plugin-named-exports-order: ^0.0.2
-    esbuild: ^0.16.14
-    eslint: ^8.31.0
-    eslint-config-airbnb: ^19.0.4
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-jsx-a11y: ^6.6.1
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-react: latest
-    eslint-plugin-storybook: ^0.6.8
-    husky: ^8.0.2
-    lint-staged: ^13.1.0
-    prettier: ^2.8.1
-    prop-types: ^15.8.1
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    react-scripts: ^5.0.1
-    typescript: ^4.9.4
-    webpack: ^5.75.0
-  languageName: unknown
-  linkType: soft
 
 "env-paths@npm:^2.2.0":
   version: 2.2.1
