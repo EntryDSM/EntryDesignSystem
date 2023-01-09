@@ -51,7 +51,13 @@
             }
         ],
         "import/prefer-default-export": [0],
-        "import/no-unresolved": "off"
+        "import/no-unresolved": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
     },
     "settings": {
         "import/resolver": {
