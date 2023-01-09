@@ -9,11 +9,11 @@
         "lint": "eslint --ext .tsx,ts src/ --fix",
         "build-type": "pnpify tsc  -p tsconfig.json --declaration --emitDeclarationOnly",
         "build-bundle": "node ./esbuild.config.js",
-        "build-storybook": "yarn build-storybook -s public",
+        "storybook:build": "build-storybook -s public",
         "build-clean": "rm -rf ./build",
         "pre-release": "yarn pack",
         "prepare": "husky install",
-        "chromatic": "chromatic --exit-zero-on-changes"
+        "chromatic": "chromatic --exit-zero-on-changes --buildScriptNmae=storybook:build"
     },
     "dependencies": {
         "@emotion/react": "^11.10.5",
