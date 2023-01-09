@@ -9,7 +9,7 @@
         "lint": "eslint --ext .tsx,ts src/ --fix",
         "build-type": "pnpify tsc  -p tsconfig.json --declaration --emitDeclarationOnly",
         "build-bundle": "node ./esbuild.config.js",
-        "build-storybook": "build-storybook -s public",
+        "build-storybook": "yarn build-storybook -s public",
         "build-clean": "rm -rf ./build",
         "pre-release": "yarn pack",
         "prepare": "husky install",
