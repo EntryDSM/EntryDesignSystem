@@ -13,7 +13,7 @@
         "build-clean": "rm -rf ./build",
         "pre-release": "yarn pack",
         "prepare": "husky install",
-        "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+        "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
     },
     "dependencies": {
         "@emotion/react": "^11.10.5",
