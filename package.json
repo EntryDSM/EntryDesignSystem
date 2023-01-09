@@ -16,6 +16,8 @@
         "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
     },
     "dependencies": {
+        "@emotion/react": "^11.10.5",
+        "@emotion/styled": "^11.10.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
