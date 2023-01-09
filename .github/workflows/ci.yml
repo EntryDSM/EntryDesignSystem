@@ -3,19 +3,24 @@ name: CI
 on: pull_request
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: github action checkout
-        uses: actions/checkout@v3
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: github action checkout
+              uses: actions/checkout@v3
 
-      - name: use Node 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+            - name: use Node 16
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
 
-      - name: Install packages
-        run: yarn install --immutable
+            - name: Install packages
+              run: yarn install --immutable
 
-      - name: Build packages
-        run: yarn build
+            - name: Build packages
+              run: yarn build
+
+            - name: Publish to Chromatic
+              uses: chromaui/action@v1
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
