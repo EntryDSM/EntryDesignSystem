@@ -43,6 +43,7 @@
         "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
         "@yarnpkg/pnpify": "^4.0.0-rc.34",
         "babel-plugin-named-exports-order": "^0.0.2",
+        "chromatic": "^6.14.0",
         "esbuild": "^0.16.14",
         "eslint": "^8.31.0",
         "eslint-config-airbnb": "^19.0.4",
