@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
+    "private": "false",
     "scripts": {
         "start": "start-storybook -p 6006 -s public",
         "build": "yarn build-clean & yarn build-type & yarn build-bundle",
