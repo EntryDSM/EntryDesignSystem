@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
-interface ISpiner {
+interface SpinnerProps {
     size: number;
     color: 'orange' | 'green';
 }
 
-const Block = styled.div<ISpiner>`
+const Block = styled.div<SpinnerProps>`
     @keyframes spin {
         0% {
             transform: rotate(0deg);
@@ -25,6 +25,6 @@ const Block = styled.div<ISpiner>`
     box-sizing: border-box;
     animation: spin 0.8s linear infinite;
 `;
-export const Spiner = ({ size = 40, color = 'orange' }: ISpiner) => {
+export const Spinner = ({ size = 40, color = 'orange' }: SpinnerProps) => {
     return <Block size={size} color={color} />;
 };

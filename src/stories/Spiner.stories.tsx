@@ -1,14 +1,14 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Spiner } from '../components/Spiner';
+import { Spinner } from '../components/Spinner';
 
 export default {
-    title: 'Component/Spiner',
-    component: Spiner,
+    title: 'Component/Spinner',
+    component: Spinner,
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {},
-} as ComponentMeta<typeof Spiner>;
+} as ComponentMeta<typeof Spinner>;
 
-const Template: ComponentStory<typeof Spiner> = (args) => <Spiner {...args} />;
+const Template: ComponentStory<typeof Spinner> = (args) => <Spinner {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
