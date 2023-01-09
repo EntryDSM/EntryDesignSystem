@@ -18,6 +18,9 @@ jobs:
               with:
                   node-version: '18'
 
+            - name: Husky Prepare
+              run: yarn prepare
+
             - name: Install dependencies
               run: yarn install --immutable
 
