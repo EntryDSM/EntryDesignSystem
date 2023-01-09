@@ -12,7 +12,8 @@
         "build-storybook": "build-storybook -s public",
         "build-clean": "rm -rf ./build",
         "pre-release": "yarn pack",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "chromatic": "chromatic --exit-zero-on-changes"
     },
     "dependencies": {
         "@emotion/react": "^11.10.5",
