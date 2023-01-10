@@ -12,7 +12,6 @@
         "storybook:build": "yarn build-storybook -s public",
         "build-clean": "rm -rf ./build",
         "pre-release": "yarn pack",
-        "prepare": "husky install",
         "publish:release": "yarn npm publish",
         "chromatic": "chromatic --exit-zero-on-changes --buildScriptNmae=storybook:build"
     },
