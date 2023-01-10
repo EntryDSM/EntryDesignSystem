@@ -16,18 +16,7 @@
             }
         ],
         "@semantic-release/release-notes-generator",
-        [
-            "@semantic-release/npm",
-            {
-                "npmPublish": false
-            }
-        ],
-        [
-            "@semantic-release/exec",
-            {
-                "publishCmd": "yarn publish:release"
-            }
-        ],
+        "@semantic-release/npm",
         "@semantic-release/git"
     ]
 }
