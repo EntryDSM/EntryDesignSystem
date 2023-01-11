@@ -5,12 +5,13 @@ type colorType = 'orange' | 'green';
 interface SwitchProps {
     isClick: boolean;
     color: colorType;
+    onClick: () => void;
 }
 
-export const Switch = ({ isClick, color = 'orange' }: SwitchProps) => {
+export const Switch = ({ isClick, color = 'orange', onClick }: SwitchProps) => {
     return (
         <Wrapper>
-            <Bar isClick={isClick} color={color}>
+            <Bar onClick={onClick} isClick={isClick} color={color}>
                 <Circle isClick={isClick} color={color} />
             </Bar>
         </Wrapper>

@@ -11,29 +11,29 @@ interface InputType {
     width: number;
     addString: string;
     label: string;
-    onChange: () => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string;
 }
 
 export const Input = ({
-    label,
     type,
     placeholder = 'Placeholder',
     width = 250,
     addString,
+    label,
     onChange,
+    value,
 }: InputType) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [isClick, setIsClick] = useState<boolean>(false);
     return (
         <Label>
             {label && <LabelText>{label}</LabelText>}
             <InputWrapper width={width}>
                 <InputBox
-                    onChange={onChange}
+                    onChange={(e) => onChange(e)}
                     type={(isOpen && 'text') || type}
-                    placeholder={isClick ? '' : placeholder}
-                    onClick={() => setIsClick(true)}
-                    onBlur={() => setIsClick(false)}
+                    placeholder={placeholder}
+                    value={value}
                 />
                 {type === 'password' && (
                     <Detailfunc onClick={() => setIsOpen(!isOpen)}>

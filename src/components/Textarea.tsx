@@ -6,6 +6,8 @@ interface InputProps {
     width: number;
     label: string;
     limit: number;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    value: string;
 }
 
 export const Textarea = ({
@@ -13,9 +15,14 @@ export const Textarea = ({
     placeholder = 'Placeholder',
     width = 500,
     limit = 300,
+    onChange,
+    value,
 }: InputProps) => {
     const [totalText, setTotalText] = useState<number>(0);
-    const [isClick, setIsClick] = useState<boolean>(false);
+    const totalOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setTotalText(e.target.value.length);
+        onChange(e);
+    };
     return (
         <Label>
             <InfoLabel width={width}>
@@ -26,10 +33,9 @@ export const Textarea = ({
             </InfoLabel>
             <TextBox
                 width={width}
-                placeholder={isClick ? '' : placeholder}
-                onClick={() => setIsClick(true)}
-                onBlur={() => setIsClick(false)}
-                onChange={(e) => setTotalText(e.target.value.length)}
+                placeholder={placeholder}
+                onChange={(e) => totalOnChange(e)}
+                value={value}
                 maxLength={limit}
             />
         </Label>
