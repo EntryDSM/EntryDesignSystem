@@ -6,12 +6,12 @@ type colorType = 'orange' | 'green';
 interface CheckboxProps {
     isCheck: boolean;
     color: colorType;
+    onClick: (isCheck: boolean) => void;
 }
 
-export const Checkbox = ({ isCheck, color = 'orange' }: CheckboxProps) => {
+export const Checkbox = ({ isCheck, color = 'orange', onClick }: CheckboxProps) => {
     return (
-        <Box check={isCheck} color={color}>
-            {/* TODO realWhite */}
+        <Box onClick={() => onClick(!isCheck)} check={isCheck} color={color}>
             {isCheck && <Check />}
         </Box>
     );
