@@ -3,17 +3,41 @@ import styled from '@emotion/styled';
 import { ReactComponent as Visible } from '../../public/Asset/visible.svg';
 import { ReactComponent as NotVisible } from '../../public/Asset/notVisible.svg';
 
-type typeType = 'text' | 'password';
+type inputType = 'text' | 'password';
 
 interface InputType {
-    type: typeType;
+    type: inputType;
     placeholder: string;
     width: number;
-    addString: string;
+    unit: string;
     label: string;
 }
 
-const Label = styled.label`
+export const Input = ({
+    label,
+    type,
+    placeholder = 'Placeholder',
+    width = 250,
+    unit,
+}: InputType) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    return (
+        <InputLabel>
+            {label && <LabelText>{label}</LabelText>}
+            <InputWrapper width={width}>
+                <InputBox type={(isOpen && 'text') || type} placeholder={placeholder} />
+                {type === 'password' && (
+                    <UnitText onClick={() => setIsOpen(!isOpen)}>
+                        {isOpen ? <Visible /> : <NotVisible />}
+                    </UnitText>
+                )}
+                {unit && <UnitText>{unit}</UnitText>}
+            </InputWrapper>
+        </InputLabel>
+    );
+};
+
+const InputLabel = styled.label`
     height: 65px;
     font-size: 14px;
     line-height: 17px;
@@ -54,40 +78,10 @@ const InputBox = styled.input`
     }
 `;
 
-const Detailfunc = styled.div`
+const UnitText = styled.div`
     height: 20px;
     position: absolute;
     right: 0px;
     margin-top: 12px;
     font-size: 16px;
 `;
-
-export const Input = ({
-    label,
-    type,
-    placeholder = 'Placeholder',
-    width = 250,
-    addString,
-}: InputType) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [isClick, setIsClick] = useState<boolean>(false);
-    return (
-        <Label>
-            {label && <LabelText>{label}</LabelText>}
-            <InputWrapper width={width}>
-                <InputBox
-                    type={(isOpen && 'text') || type}
-                    placeholder={isClick ? '' : placeholder}
-                    onClick={() => setIsClick(true)}
-                    onBlur={() => setIsClick(false)}
-                />
-                {type === 'password' && (
-                    <Detailfunc onClick={() => setIsOpen(!isOpen)}>
-                        {isOpen ? <Visible /> : <NotVisible />}
-                    </Detailfunc>
-                )}
-                {addString && <Detailfunc>{addString}</Detailfunc>}
-            </InputWrapper>
-        </Label>
-    );
-};
