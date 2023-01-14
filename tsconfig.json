@@ -14,7 +14,8 @@
         "isolatedModules": true,
         "jsx": "react-jsx",
         "outDir": "build",
-        "baseUrl": "./src"
+        "baseUrl": "./src",
+        "declaration": true
     },
     "include": ["src", "svg.d.ts"],
     "exclude": ["build"]
