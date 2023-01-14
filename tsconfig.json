@@ -15,7 +15,7 @@
         "jsx": "react-jsx",
         "outDir": "build",
         "baseUrl": "./src",
-        "declaration": true
+        "declaration": false
     },
     "include": ["src", "svg.d.ts"],
     "exclude": ["build"]
