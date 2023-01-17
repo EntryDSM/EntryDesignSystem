@@ -18,5 +18,5 @@
         "declaration": false
     },
     "include": ["src", "svg.d.ts"],
-    "exclude": ["build", "*.stories.tsx"]
+    "exclude": ["build", "stories"]
 }
