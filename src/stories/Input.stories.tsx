@@ -9,8 +9,8 @@ export default {
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
-export const Primary = Template.bind({});
+export const PrimaryInput = Template.bind({});
 
-Primary.args = {
+PrimaryInput.args = {
     type: 'text',
 };
