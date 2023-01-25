@@ -3,50 +3,41 @@ import styled from '@emotion/styled';
 import { ReactComponent as Visible } from '../../public/Asset/visible.svg';
 import { ReactComponent as NotVisible } from '../../public/Asset/notVisible.svg';
 
-type typeType = 'text' | 'password';
+type inputType = 'text' | 'password';
 
 interface InputType {
-    type: typeType;
+    type: inputType;
     placeholder: string;
     width: number;
-    addString: string;
+    unit: string;
     label: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    value: string;
 }
 
 export const Input = ({
+    label,
     type,
     placeholder = 'Placeholder',
     width = 250,
-    addString,
-    label,
-    onChange,
-    value,
+    unit,
 }: InputType) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
-        <Label>
+        <InputLabel>
             {label && <LabelText>{label}</LabelText>}
             <InputWrapper width={width}>
-                <InputBox
-                    onChange={(e) => onChange(e)}
-                    type={(isOpen && 'text') || type}
-                    placeholder={placeholder}
-                    value={value}
-                />
+                <InputBox type={(isOpen && 'text') || type} placeholder={placeholder} />
                 {type === 'password' && (
-                    <Detailfunc onClick={() => setIsOpen(!isOpen)}>
+                    <UnitText onClick={() => setIsOpen(!isOpen)}>
                         {isOpen ? <Visible /> : <NotVisible />}
-                    </Detailfunc>
+                    </UnitText>
                 )}
-                {addString && <Detailfunc>{addString}</Detailfunc>}
+                {unit && <UnitText>{unit}</UnitText>}
             </InputWrapper>
-        </Label>
+        </InputLabel>
     );
 };
 
-const Label = styled.label`
+const InputLabel = styled.label`
     height: 65px;
     font-size: 14px;
     line-height: 17px;
@@ -57,7 +48,6 @@ const Label = styled.label`
 const LabelText = styled.div`
     margin-left: 5px;
     margin-bottom: 6px;
-    font-size: 14px;
 `;
 
 const InputWrapper = styled.div<{ width: number }>`
@@ -88,12 +78,10 @@ const InputBox = styled.input`
     }
 `;
 
-const Detailfunc = styled.div`
+const UnitText = styled.div`
     height: 20px;
     position: absolute;
     right: 0px;
     margin-top: 12px;
     font-size: 16px;
-    // black600
-    color: #5f5f5f;
 `;

@@ -1,6 +1,6 @@
 {
     "name": "@team-entry/design_system",
-    "version": "0.1.0",
+    "version": "1.0.10",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
     "scripts": {
@@ -12,7 +12,6 @@
         "storybook:build": "yarn build-storybook -s public",
         "build-clean": "rm -rf ./build",
         "pre-release": "yarn pack",
-        "prepare": "husky install",
         "chromatic": "chromatic --exit-zero-on-changes --buildScriptNmae=storybook:build"
     },
     "dependencies": {
@@ -23,6 +22,11 @@
     },
     "devDependencies": {
         "@mdx-js/react": "^1.6.22",
+        "@semantic-release/commit-analyzer": "^9.0.2",
+        "@semantic-release/exec": "^6.0.3",
+        "@semantic-release/git": "^10.0.1",
+        "@semantic-release/npm": "^9.0.1",
+        "@semantic-release/release-notes-generator": "^10.0.3",
         "@storybook/addon-actions": "^6.5.15",
         "@storybook/addon-docs": "^6.5.15",
         "@storybook/addon-essentials": "^6.5.15",
