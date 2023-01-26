@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Check from '../../public/Asset/check';
+import Check from '../Asset/Check';
 
 type colorType = 'orange' | 'green';
 
