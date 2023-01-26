@@ -5,3 +5,6 @@ export * from './components/Radio';
 export * from './components/Spinner';
 export * from './components/Switch';
 export * from './components/Textarea';
+export * from '../public/Asset/check';
+export * from '../public/Asset/visible';
+export * from '../public/Asset/notVisible';
