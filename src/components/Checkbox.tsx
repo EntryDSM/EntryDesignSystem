@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ReactComponent as Check } from '../../public/Asset/check.svg';
+import Check from '../../public/Asset/check';
 
 type colorType = 'orange' | 'green';
 
