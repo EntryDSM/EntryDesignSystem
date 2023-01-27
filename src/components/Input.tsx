@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { ReactComponent as Visible } from '../../public/Asset/visible.svg';
-import { ReactComponent as NotVisible } from '../../public/Asset/notVisible.svg';
+import Visible from '../Asset/Visible';
+import NotVisible from '../Asset/NotVisible';
 
 type inputType = 'text' | 'password';
 
