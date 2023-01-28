@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { useState } from 'react';
 
 interface InputProps {
     placeholder: string;

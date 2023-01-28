@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 
 type kindType = 'contained' | 'rounded' | 'outlined' | 'delete';

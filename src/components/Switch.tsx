@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from '@emotion/styled';
 
 type colorType = 'orange' | 'green';
