@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { black300, green200, green500, orange200, orange500, realWhite } from 'style/color';
 
 type colorType = 'orange' | 'green';
 
@@ -21,16 +22,12 @@ export const Switch = ({ isClick, color = 'orange', onClick }: SwitchProps) => {
 
 const colorGenrator: Record<colorType, Record<string, string>> = {
     orange: {
-        // TODO orange200
-        bar: '#FFB48B',
-        // TODO orange500
-        circle: '#FF7E36',
+        bar: orange200,
+        circle: orange500,
     },
     green: {
-        // TODO green500
-        bar: '#92FFC3',
-        // TODO green200
-        circle: '#3DDB84',
+        bar: green200,
+        circle: green500,
     },
 };
 
@@ -41,8 +38,7 @@ const Wrapper = styled.div`
 const Circle = styled.div<{ isClick: boolean; color: colorType }>`
     width: 26px;
     height: 26px;
-    // TODO realWhite
-    background: ${({ isClick, color }) => (isClick ? colorGenrator[color].circle : '#ffffff')};
+    background: ${({ isClick, color }) => (isClick ? colorGenrator[color].circle : realWhite)};
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border: none;
     border-radius: 13px;
@@ -56,8 +52,7 @@ const Bar = styled.div<{ isClick: boolean; color: colorType }>`
     height: 20px;
     border: none;
     border-radius: 10px;
-    // TODO black/300
-    background-color: ${({ isClick, color }) => (isClick ? colorGenrator[color].bar : '#b0b0b0')};
+    background-color: ${({ isClick, color }) => (isClick ? colorGenrator[color].bar : black300)};
     display: flex;
     align-items: center;
     position: relative;

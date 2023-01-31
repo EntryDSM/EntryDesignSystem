@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Visible from '../Asset/Visible';
 import NotVisible from '../Asset/NotVisible';
+import { black400, black900, focus } from '../style/color';
 
 type inputType = 'text' | 'password';
 
@@ -41,8 +42,7 @@ const InputLabel = styled.label`
     height: 65px;
     font-size: 14px;
     line-height: 17px;
-    //TODO black/900
-    color: #141414;
+    color: ${black900};
 `;
 
 const LabelText = styled.div`
@@ -60,20 +60,16 @@ const InputBox = styled.input`
     position: absolute;
     width: 100%;
     height: 40px;
-    //TODO black/400
-    border: 1px solid #969696;
+    border: 1px solid ${black400};
     border-radius: 5px;
     padding-left: 14px;
     outline: none;
-    //TODO black900
-    color: #141414;
+    color: ${black900};
     &:focus {
-        //TODO Focus
-        border-color: #006eff;
+        border-color: ${focus};
     }
     &::placeholder {
-        //TODO black/400
-        color: #969696;
+        color: ${black400};
         font-size: 16px;
     }
 `;

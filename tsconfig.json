@@ -17,6 +17,6 @@
         "baseUrl": "./src",
         "declaration": true
     },
-    "include": ["src", "src/custom.d.ts", "src/Asset"],
+    "include": ["./src/**/*"],
     "exclude": ["build", "src/stories/*"]
 }

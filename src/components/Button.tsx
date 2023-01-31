@@ -1,5 +1,21 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
+import {
+    black300,
+    black600,
+    black700,
+    black900,
+    error,
+    green200,
+    green300,
+    green400,
+    green500,
+    orange200,
+    orange300,
+    orange400,
+    orange500,
+    realWhite,
+} from '../style/color';
 
 type kindType = 'contained' | 'rounded' | 'outlined' | 'delete';
 type colorType = 'black' | 'orange' | 'green' | 'delete';
@@ -56,58 +72,40 @@ const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children'>
             colorGenerator[color][disabled ? 'disabled' : 'hover']};
         border-color: ${({ color, disabled }) =>
             colorGenerator[color][disabled ? 'disabled' : 'hover']};
-        // TODO realWhite
-        color: #ffffff;
+        color: ${realWhite};
     }
     :active {
         background-color: ${({ color, disabled }) =>
             colorGenerator[color][disabled ? 'disabled' : 'pressed']};
         border-color: ${({ color, disabled }) =>
             colorGenerator[color][disabled ? 'disabled' : 'pressed']};
-        // TODO realWhite
-        color: #ffffff;
+        color: ${realWhite};
     }
 `;
 
 const colorGenerator: Record<colorType, Record<ButtonEventType, string>> = {
     black: {
-        // TODO black900
-        enabled: '#141414',
-        // TODO black700
-        hover: '#494949',
-        // TODO black600
-        pressed: '#5F5F5F',
-        // TODO black300
-        disabled: '#B0B0B0',
+        enabled: black900,
+        hover: black700,
+        pressed: black600,
+        disabled: black300,
     },
     orange: {
-        // TODO orange500
-        enabled: '#FF7E36',
-        // TODO orange400
-        hover: '#FF9154',
-        // TODO orange300
-        pressed: '#FFA26E',
-        // TODO orange200
-        disabled: '#FFB48B',
+        enabled: orange500,
+        hover: orange400,
+        pressed: orange300,
+        disabled: orange200,
     },
     green: {
-        // TODO green500
-        enabled: '#3DDB84',
-        // TODO green400
-        hover: '#4FF098',
-        // TODO green300
-        pressed: '#68EDA4',
-        // TODO green200
-        disabled: '#92FFC3',
+        enabled: green500,
+        hover: green400,
+        pressed: green300,
+        disabled: green200,
     },
     delete: {
-        // TODO Error
-        enabled: '#E84045',
-        // TODO Error
-        hover: '#E84045',
-        // TODO Error
-        pressed: '#E84045',
-        // TODO black300
-        disabled: '#B0B0B0',
+        enabled: error,
+        hover: error,
+        pressed: error,
+        disabled: black300,
     },
 };

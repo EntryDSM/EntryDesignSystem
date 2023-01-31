@@ -18,3 +18,5 @@ export const font = {
     body5: fontGenerator(500, 14),
     body6: fontGenerator(400, 14),
 } as const;
+
+export type fontKeyOfType = keyof typeof font;

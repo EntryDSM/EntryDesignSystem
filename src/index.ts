@@ -6,3 +6,4 @@ export * from './components/Spinner';
 export * from './components/Switch';
 export * from './components/Textarea';
 export * from './Asset';
+export * from './style';

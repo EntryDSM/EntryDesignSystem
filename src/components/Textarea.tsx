@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { black400, black900, focus } from 'style/color';
 
 interface InputProps {
     placeholder: string;
@@ -46,8 +47,7 @@ const Label = styled.label`
     height: 65px;
     font-size: 14px;
     line-height: 17px;
-    //TODO black/900
-    color: #141414;
+    color: ${black900};
     font-size: 14px;
 `;
 
@@ -60,31 +60,26 @@ const InfoLabel = styled.div<{ width: number }>`
 `;
 
 const TextCount = styled.span`
-    //TODO black/400
-    color: #969696;
+    color: ${black400};
 `;
 
 const TextBox = styled.textarea<{ width: number }>`
     width: ${({ width }) => width}px;
     position: absolute;
     height: 300px;
-    //TODO black/400
-    border: 1px solid #969696;
+    border: 1px solid ${black400};
     border-radius: 5px;
     padding: 12px 15px;
     outline: none;
-    //TODO black900
-    color: #141414;
+    color: ${black900};
     font-size: 16px;
     line-height: 19px;
     resize: none;
     &:focus {
-        //TODO Focus
-        border-color: #006eff;
+        border-color: ${focus};
     }
     &::placeholder {
-        //TODO black/400
-        color: #969696;
+        color: ${black400};
         font-size: 16px;
     }
 `;

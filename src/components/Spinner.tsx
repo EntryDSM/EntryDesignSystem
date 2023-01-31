@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { green100, green500, orange100, orange500 } from '../style/color';
 
 interface SpinnerProps {
-    size: number;
     color: 'orange' | 'green';
 }
 
@@ -15,17 +15,15 @@ const Block = styled.div<SpinnerProps>`
             transform: rotate(360deg);
         }
     }
-    width: ${(props) => props.size}px;
-    height: ${(props) => props.size}px;
-    // TODO orange100 green500
-    border: 5px solid ${(props) => (props.color === 'orange' ? '#ffcdb1' : '#ccffe2')};
-    //ToDO orange500 green500
-    border-top-color: ${(props) => (props.color === 'orange' ? '#ff7e36' : '#3ddb84')};
+    width: 40px;
+    height: 40px;
+    border: 5px solid ${(props) => (props.color === 'orange' ? orange100 : green100)};
+    border-top-color: ${(props) => (props.color === 'orange' ? orange500 : green500)};
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
     animation: spin 0.8s linear infinite;
 `;
-export const Spinner = ({ size = 40, color = 'orange' }: SpinnerProps) => {
-    return <Block size={size} color={color} />;
+export const Spinner = ({ color = 'orange' }: SpinnerProps) => {
+    return <Block color={color} />;
 };

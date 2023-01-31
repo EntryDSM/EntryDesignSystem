@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { black50, black500, orange400, orange500, green300, green500 } from '../style/color';
 
 type colorType = 'orange' | 'green';
 
@@ -51,11 +52,8 @@ const Label = styled.div`
 const Border = styled.div<{ isClick: boolean; color: colorType }>`
     width: 26px;
     height: 26px;
-    // black50
-    background-color: #fbfbfb;
-    // black500
-    border: 1px solid
-        ${({ isClick, color }) => (isClick ? colorGenerator[color].border : '#737373')};
+    background-color: ${black50};
+    border: 1px solid ${({ isClick, color }) => (isClick ? colorGenerator[color].border : black500)};
     border-radius: 13px;
     display: flex;
     justify-content: center;
@@ -73,11 +71,11 @@ const Circle = styled.div<{ color: colorType }>`
 
 const colorGenerator: Record<colorType, Record<string, string>> = {
     orange: {
-        border: '#FF9154',
-        circle: '#FF7E36',
+        border: orange500,
+        circle: orange400,
     },
     green: {
-        border: '#3DDB84',
-        circle: '#68EDA4',
+        border: green500,
+        circle: green300,
     },
 };
