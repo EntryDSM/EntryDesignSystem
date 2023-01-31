@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { black400, black900, focus } from 'style/color';
+import { black400, black900, focus } from '../style/color';
 
 interface InputProps {
     placeholder: string;

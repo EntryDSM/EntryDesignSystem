@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { black300, green200, green500, orange200, orange500, realWhite } from 'style/color';
+import { black300, green200, green500, orange200, orange500, realWhite } from '../style/color';
 
 type colorType = 'orange' | 'green';
 
