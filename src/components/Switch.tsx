@@ -10,7 +10,7 @@ interface SwitchProps {
     onClick: () => void;
 }
 
-export const Switch = ({ isClick, color = 'orange', onClick }: SwitchProps) => {
+export const Switch: React.FC<SwitchProps> = ({ isClick, color = 'orange', onClick }) => {
     return (
         <Wrapper>
             <Bar onClick={onClick} isClick={isClick} color={color}>

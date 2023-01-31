@@ -11,14 +11,14 @@ interface InputProps {
     value: string;
 }
 
-export const Textarea = ({
+export const Textarea: React.FC<InputProps> = ({
     label = 'title',
     placeholder = 'Placeholder',
     width = 500,
     limit = 300,
     onChange,
     value,
-}: InputProps) => {
+}) => {
     const [totalText, setTotalText] = useState<number>(0);
     const totalOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setTotalText(e.target.value.length);

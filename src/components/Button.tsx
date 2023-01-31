@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import {
     black300,
@@ -31,13 +31,13 @@ interface ButtonProps {
     onClick: () => void;
 }
 
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
     kind = 'contained',
     color = 'black',
     disabled = false,
     children,
     onClick,
-}: ButtonProps) => {
+}) => {
     return (
         <Wrapper onClick={() => !disabled && onClick} kind={kind} color={color} disabled={disabled}>
             {children}

@@ -14,13 +14,13 @@ interface InputType {
     label: string;
 }
 
-export const Input = ({
+export const Input: React.FC<InputType> = ({
     label,
     type,
     placeholder = 'Placeholder',
     width = 250,
     unit,
-}: InputType) => {
+}) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
         <InputLabel>

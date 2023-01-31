@@ -24,6 +24,6 @@ const Block = styled.div<SpinnerProps>`
     box-sizing: border-box;
     animation: spin 0.8s linear infinite;
 `;
-export const Spinner = ({ color = 'orange' }: SpinnerProps) => {
+export const Spinner: React.FC<SpinnerProps> = ({ color = 'orange' }) => {
     return <Block color={color} />;
 };

@@ -11,7 +11,7 @@ interface CheckboxProps {
     onClick: (isCheck: boolean) => void;
 }
 
-export const Checkbox = ({ isCheck, color = 'orange', onClick }: CheckboxProps) => {
+export const Checkbox: React.FC<CheckboxProps> = ({ isCheck, color = 'orange', onClick }) => {
     return (
         <Box onClick={() => onClick(!isCheck)} check={isCheck} color={color}>
             {isCheck && <Check />}
