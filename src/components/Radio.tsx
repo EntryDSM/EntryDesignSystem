@@ -11,7 +11,7 @@ interface RadioProps {
 }
 
 export const Radio: React.FC<RadioProps> = ({ title, label, color = 'orange' }) => {
-    const [click, setClick] = useState<string>();
+    const [click, setClick] = useState<string>('');
     const onClick = (id: string) => {
         setClick(id);
     };
