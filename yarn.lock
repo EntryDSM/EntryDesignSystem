@@ -4825,16 +4825,19 @@ __metadata:
     "@typescript-eslint/parser": latest
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     "@yarnpkg/pnpify": ^4.0.0-rc.34
+    airbnb: ^0.0.2
     babel-plugin-named-exports-order: ^0.0.2
     chromatic: ^6.14.0
     esbuild: ^0.16.14
     eslint: ^8.31.0
     eslint-config-airbnb: ^19.0.4
+    eslint-config-airbnb-typescript: ^17.0.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jsx-a11y: ^6.6.1
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-react: latest
+    eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-storybook: ^0.6.8
     husky: ^8.0.2
     lint-staged: ^13.1.0
@@ -6572,6 +6575,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"airbnb@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "airbnb@npm:0.0.2"
+  dependencies:
+    chalk: ^2.4.2
+  bin:
+    airbnb: ./index.js
+  checksum: 2b93a2666eb4edc2254e0d632473a78917bc7f2d8847a6b7f0b0a862ab81e206706d2553db833219334dbc32942b592a372b8a5b886bbd8a8fb3be3a365fcea8
+  languageName: node
+  linkType: hard
+
 "ajv-errors@npm:^1.0.0":
   version: 1.0.1
   resolution: "ajv-errors@npm:1.0.1"
@@ -8133,7 +8147,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^2.0.0, chalk@npm:^2.4.1":
+"chalk@npm:^2.0.0, chalk@npm:^2.4.1, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -10547,6 +10561,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-airbnb-typescript@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "eslint-config-airbnb-typescript@npm:17.0.0"
+  dependencies:
+    eslint-config-airbnb-base: ^15.0.0
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^5.13.0
+    "@typescript-eslint/parser": ^5.0.0
+    eslint: ^7.32.0 || ^8.2.0
+    eslint-plugin-import: ^2.25.3
+  checksum: e598ae7bcc3629bbc847a749f8c1ad69e6ef111335b60d88bde91d1bb335077b06688868257fe2fcc95c3687a0d6e3e1f91e0534cc633f5a118239e52bb05a54
+  languageName: node
+  linkType: hard
+
 "eslint-config-airbnb@npm:^19.0.4":
   version: 19.0.4
   resolution: "eslint-config-airbnb@npm:19.0.4"
@@ -10713,7 +10741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^4.3.0":
+"eslint-plugin-react-hooks@npm:^4.3.0, eslint-plugin-react-hooks@npm:^4.6.0":
   version: 4.6.0
   resolution: "eslint-plugin-react-hooks@npm:4.6.0"
   peerDependencies:

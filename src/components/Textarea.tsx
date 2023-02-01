@@ -35,7 +35,7 @@ export const Textarea: React.FC<InputProps> = ({
             <TextBox
                 width={width}
                 placeholder={placeholder}
-                onChange={(e) => totalOnChange(e)}
+                onChange={totalOnChange}
                 value={value}
                 maxLength={limit}
             />
