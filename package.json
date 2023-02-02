@@ -5,7 +5,7 @@
     "types": "./build/index.d.ts",
     "scripts": {
         "start": "start-storybook -p 6006 -s public",
-        "build": "yarn build-clean & yarn build-type & yarn build-bundle",
+        "build": "yarn build-clean & yarn build-type & yarn build-bundle & tsc --declaration",
         "lint": "eslint --ext .tsx,ts src/ --fix",
         "build-type": "pnpify tsc  -p tsconfig.json --declaration --emitDeclarationOnly",
         "build-bundle": "node ./esbuild.config.js",
