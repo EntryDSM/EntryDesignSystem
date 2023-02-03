@@ -7,3 +7,5 @@ export * from './components/Switch';
 export * from './components/Textarea';
 export * from './Asset';
 export * from './style/StyledProvider';
+export * from './style';
+export * from './components/Text';

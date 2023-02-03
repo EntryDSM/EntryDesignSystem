@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
+import * as F from '../style/font';
 import {
     black300,
     black600,
@@ -57,6 +58,7 @@ const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children'>
     border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
     min-width: 80px;
+    ${F.font.body3}
     color: ${({ kind, color, disabled }) =>
         kind === 'outlined' || kind === 'delete'
             ? colorGenerator[color][disabled ? 'disabled' : 'enabled']
