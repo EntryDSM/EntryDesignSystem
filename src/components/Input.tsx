@@ -3,10 +3,11 @@ import styled from '@emotion/styled';
 import Visible from '../Asset/Visible';
 import NotVisible from '../Asset/NotVisible';
 import { black400, black900, focus } from '../style/color';
+import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 type inputType = 'text' | 'password';
 
-interface InputType {
+interface InputType extends marginCssType {
     type: inputType;
     placeholder: string;
     width: number;
@@ -20,23 +21,30 @@ export const Input: React.FC<InputType> = ({
     placeholder = 'Placeholder',
     width = 250,
     unit,
+    margin,
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
-        <InputLabel>
-            {label && <LabelText>{label}</LabelText>}
-            <InputWrapper width={width}>
-                <InputBox type={(isOpen && 'text') || type} placeholder={placeholder} />
-                {type === 'password' && (
-                    <UnitText onClick={() => setIsOpen(!isOpen)}>
-                        {isOpen ? <Visible /> : <NotVisible />}
-                    </UnitText>
-                )}
-                {unit && <UnitText>{unit}</UnitText>}
-            </InputWrapper>
-        </InputLabel>
+        <Container margin={margin}>
+            <InputLabel>
+                {label && <LabelText>{label}</LabelText>}
+                <InputWrapper width={width}>
+                    <InputBox type={(isOpen && 'text') || type} placeholder={placeholder} />
+                    {type === 'password' && (
+                        <UnitText onClick={() => setIsOpen(!isOpen)}>
+                            {isOpen ? <Visible /> : <NotVisible />}
+                        </UnitText>
+                    )}
+                    {unit && <UnitText>{unit}</UnitText>}
+                </InputWrapper>
+            </InputLabel>
+        </Container>
     );
 };
+
+const Container = styled.div<{ margin?: marginType | marginType[] }>`
+    ${({ margin }) => marginToCss({ margin })};
+`;
 
 const InputLabel = styled.label`
     height: 65px;

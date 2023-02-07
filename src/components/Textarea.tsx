@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { black400, black900, focus } from '../style/color';
+import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
-interface InputProps {
+interface InputProps extends marginCssType {
     placeholder: string;
     width: number;
     label: string;
@@ -18,6 +19,7 @@ export const Textarea: React.FC<InputProps> = ({
     limit = 300,
     onChange,
     value,
+    margin,
 }) => {
     const [totalText, setTotalText] = useState<number>(0);
     const totalOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -25,23 +27,29 @@ export const Textarea: React.FC<InputProps> = ({
         onChange(e);
     };
     return (
-        <Label>
-            <InfoLabel width={width}>
-                {label}
-                <TextCount>
-                    {totalText}/{limit}
-                </TextCount>
-            </InfoLabel>
-            <TextBox
-                width={width}
-                placeholder={placeholder}
-                onChange={totalOnChange}
-                value={value}
-                maxLength={limit}
-            />
-        </Label>
+        <Container margin={margin}>
+            <Label>
+                <InfoLabel width={width}>
+                    {label}
+                    <TextCount>
+                        {totalText}/{limit}
+                    </TextCount>
+                </InfoLabel>
+                <TextBox
+                    width={width}
+                    placeholder={placeholder}
+                    onChange={totalOnChange}
+                    value={value}
+                    maxLength={limit}
+                />
+            </Label>
+        </Container>
     );
 };
+
+const Container = styled.div<{ margin?: marginType | marginType[] }>`
+    ${({ margin }) => marginToCss({ margin })};
+`;
 
 const Label = styled.label`
     height: 65px;

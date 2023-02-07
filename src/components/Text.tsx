@@ -2,9 +2,10 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { colorKeyOfType } from 'style/color';
 import { fontKeyOfType } from 'style/font';
+import { marginCssType, marginToCss } from '../utils/margin';
 import { theme } from '../style/index';
 
-interface TextProps {
+interface TextProps extends marginCssType {
     className?: string;
     children?: ReactNode;
     color: colorKeyOfType;
@@ -24,6 +25,7 @@ export const Text = ({
     onClick,
     cursor,
     align,
+    margin,
 }: TextProps) => {
     return (
         <Wrapper
@@ -33,6 +35,7 @@ export const Text = ({
             align={align}
             cursor={cursor}
             onClick={onClick}
+            margin={margin}
             size={size}>
             {children}
         </Wrapper>
@@ -45,4 +48,5 @@ const Wrapper = styled.div<TextProps>`
     ${({ size }) => theme.font[size]};
     text-align: ${({ align }) => align};
     cursor: ${({ cursor }) => cursor};
+    ${({ margin }) => marginToCss({ margin })};
 `;

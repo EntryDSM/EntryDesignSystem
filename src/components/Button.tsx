@@ -17,12 +17,13 @@ import {
     orange500,
     realWhite,
 } from '../style/color';
+import { marginCssType, marginToCss } from '../utils/margin';
 
 type kindType = 'contained' | 'rounded' | 'outlined' | 'delete';
 type colorType = 'black' | 'orange' | 'green' | 'delete';
 type ButtonEventType = 'enabled' | 'hover' | 'pressed' | 'disabled';
 
-interface ButtonProps {
+interface ButtonProps extends marginCssType {
     /** delete 쓸때 무조건 kind랑 color를 둘다 delete로 설정하세요. */
     kind?: kindType;
     /** delete 쓸때 무조건 color랑 kind를 둘다 delete로 설정하세요. */
@@ -38,9 +39,15 @@ export const Button: React.FC<ButtonProps> = ({
     disabled = false,
     children,
     onClick,
+    margin,
 }) => {
     return (
-        <Wrapper onClick={() => !disabled && onClick} kind={kind} color={color} disabled={disabled}>
+        <Wrapper
+            onClick={() => !disabled && onClick}
+            kind={kind}
+            color={color}
+            margin={margin ?? [0, 0]}
+            disabled={disabled}>
             {children}
         </Wrapper>
     );
@@ -58,7 +65,8 @@ const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children'>
     border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
     min-width: 80px;
-    ${F.font.body3}
+    ${F.font.body3};
+    ${({ margin }) => marginToCss({ margin })};
     color: ${({ kind, color, disabled }) =>
         kind === 'outlined' || kind === 'delete'
             ? colorGenerator[color][disabled ? 'disabled' : 'enabled']

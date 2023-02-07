@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { black300, green200, green500, orange200, orange500, realWhite } from '../style/color';
+import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 type colorType = 'orange' | 'green';
 
-interface SwitchProps {
+interface SwitchProps extends marginCssType {
     isClick: boolean;
     color: colorType;
     onClick: () => void;
 }
 
-export const Switch: React.FC<SwitchProps> = ({ isClick, color = 'orange', onClick }) => {
+export const Switch: React.FC<SwitchProps> = ({ isClick, color = 'orange', onClick, margin }) => {
     return (
-        <Wrapper>
+        <Wrapper margin={margin}>
             <Bar onClick={onClick} isClick={isClick} color={color}>
                 <Circle isClick={isClick} color={color} />
             </Bar>
@@ -31,8 +32,9 @@ const colorGenrator: Record<colorType, Record<string, string>> = {
     },
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ margin?: marginType | marginType[] }>`
     height: 26px;
+    ${({ margin }) => marginToCss({ margin })};
 `;
 
 const Circle = styled.div<{ isClick: boolean; color: colorType }>`

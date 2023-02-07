@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { black50, black500, orange400, orange500, green300, green500 } from '../style/color';
+import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 type colorType = 'orange' | 'green';
 
-interface RadioProps {
+interface RadioProps extends marginCssType {
     title: string;
     label: string[];
     color: colorType;
 }
 
-export const Radio: React.FC<RadioProps> = ({ title, label, color = 'orange' }) => {
+export const Radio: React.FC<RadioProps> = ({ title, label, color = 'orange', margin }) => {
     const [click, setClick] = useState<string>('');
     const onClick = (id: string) => {
         setClick(id);
     };
     return (
-        <>
+        <Container margin={margin}>
             <Title>{title}</Title>
             <LabelWrapper>
                 {label &&
@@ -29,9 +30,13 @@ export const Radio: React.FC<RadioProps> = ({ title, label, color = 'orange' }) 
                         </Label>
                     ))}
             </LabelWrapper>
-        </>
+        </Container>
     );
 };
+
+const Container = styled.div<{ margin?: marginType | marginType[] }>`
+    ${({ margin }) => marginToCss({ margin })};
+`;
 
 const Title = styled.div`
     padding: 6px 4px;
