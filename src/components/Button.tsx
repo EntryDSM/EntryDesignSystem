@@ -43,7 +43,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
     return (
         <Wrapper
-            onClick={() => !disabled && onClick}
+            onClick={() => !disabled && onClick()}
             kind={kind}
             color={color}
             margin={margin ?? [0, 0]}
