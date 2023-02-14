@@ -30,6 +30,7 @@ interface ButtonProps extends marginCssType {
     color?: colorType;
     children?: ReactNode;
     disabled?: boolean;
+    cursor?: 'pointer' | 'auto' | 'default';
     onClick: () => void;
 }
 
@@ -40,12 +41,14 @@ export const Button: React.FC<ButtonProps> = ({
     children,
     onClick,
     margin,
+    cursor,
 }) => {
     return (
         <Wrapper
             onClick={() => !disabled && onClick()}
             kind={kind}
             color={color}
+            cursor={cursor ?? 'pointer'}
             margin={margin ?? [0, 0]}
             disabled={disabled}>
             {children}
@@ -65,6 +68,7 @@ const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children'>
     border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
     min-width: 80px;
+    cursor: ${({ cursor }) => cursor};
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};
     color: ${({ kind, color, disabled }) =>

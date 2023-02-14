@@ -49,4 +49,5 @@ const Wrapper = styled.div<TextProps>`
     text-align: ${({ align }) => align};
     cursor: ${({ cursor }) => cursor};
     ${({ margin }) => marginToCss({ margin })};
+    white-space: pre-line;
 `;
