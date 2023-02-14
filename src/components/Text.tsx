@@ -53,4 +53,5 @@ const Wrapper = styled.div<TextProps>`
     cursor: ${({ cursor }) => cursor};
     ${({ margin }) => marginToCss({ margin })};
     width: ${({ width }) => width}rem;
+    ${({ width }) => width && `display: flex; justify-content: center;`}
 `;
