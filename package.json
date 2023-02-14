@@ -1,6 +1,6 @@
 {
     "name": "@team-entry/design_system",
-    "version": "1.0.26",
+    "version": "1.0.27",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
     "scripts": {
