@@ -14,6 +14,7 @@ interface TextProps extends marginCssType {
     onClick?: () => void;
     cursor?: 'pointer' | 'auto' | 'default';
     align?: 'center' | 'start' | 'end';
+    width?: number;
 }
 
 export const Text = ({
@@ -26,6 +27,7 @@ export const Text = ({
     cursor,
     align,
     margin,
+    width,
 }: TextProps) => {
     return (
         <Wrapper
@@ -36,7 +38,8 @@ export const Text = ({
             cursor={cursor}
             onClick={onClick}
             margin={margin}
-            size={size}>
+            size={size}
+            width={width}>
             {children}
         </Wrapper>
     );
@@ -49,5 +52,7 @@ const Wrapper = styled.div<TextProps>`
     text-align: ${({ align }) => align};
     cursor: ${({ cursor }) => cursor};
     ${({ margin }) => marginToCss({ margin })};
+    width: ${({ width }) => width}rem;
+    ${({ width }) => width && `display: flex; justify-content: center;`}
     white-space: pre-line;
 `;
