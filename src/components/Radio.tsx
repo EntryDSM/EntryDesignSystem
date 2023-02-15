@@ -52,6 +52,7 @@ const Label = styled.div`
     margin-right: 16px;
     font-size: 18px;
     display: flex;
+    cursor: pointer;
 `;
 
 const Border = styled.div<{ isClick: boolean; color: colorType }>`

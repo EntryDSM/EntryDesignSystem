@@ -58,4 +58,5 @@ const Bar = styled.div<{ isClick: boolean; color: colorType }>`
     display: flex;
     align-items: center;
     position: relative;
+    cursor: pointer;
 `;

@@ -35,6 +35,7 @@ const Box = styled.div<{ check: boolean; color: colorType; margin?: marginType |
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 `;
 
 const colorGenerate: Record<colorType, string> = {
