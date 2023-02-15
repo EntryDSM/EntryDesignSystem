@@ -25,7 +25,7 @@ export const Input: React.FC<InputType> = ({
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
-        <Container margin={margin}>
+        <Container margin={margin} label={label}>
             <InputLabel>
                 {label && <LabelText>{label}</LabelText>}
                 <InputWrapper width={width}>
@@ -42,8 +42,9 @@ export const Input: React.FC<InputType> = ({
     );
 };
 
-const Container = styled.div<{ margin?: marginType | marginType[] }>`
+const Container = styled.div<{ margin?: marginType | marginType[]; label?: string }>`
     ${({ margin }) => marginToCss({ margin })};
+    height: ${({ label }) => (label ? 64 : 40)}px;
 `;
 
 const InputLabel = styled.label`

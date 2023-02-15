@@ -49,6 +49,7 @@ export const Textarea: React.FC<InputProps> = ({
 
 const Container = styled.div<{ margin?: marginType | marginType[] }>`
     ${({ margin }) => marginToCss({ margin })};
+    height: 323px;
 `;
 
 const Label = styled.label`
