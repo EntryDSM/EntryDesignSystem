@@ -68,6 +68,7 @@ const InfoLabel = styled.div<{ width: number }>`
     font-size: 14px;
     font-weight: 500;
     color: ${black900};
+    padding-right: 5px;
 `;
 
 const TextCount = styled.span`
