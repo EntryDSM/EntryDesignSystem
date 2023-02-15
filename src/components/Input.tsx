@@ -11,7 +11,7 @@ interface InputType extends marginCssType {
     type: inputType;
     placeholder: string;
     width: number;
-    unit: string;
+    unit?: string;
     label: string;
 }
 
@@ -56,10 +56,13 @@ const InputLabel = styled.label`
 const LabelText = styled.div`
     margin-left: 5px;
     margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: ${black900};
 `;
 
 const InputWrapper = styled.div<{ width: number }>`
-    width: ${({ width }) => width}px;
+    width: ${({ width }) => width}rem;
     position: relative;
     border: none;
 `;
