@@ -4,6 +4,7 @@ import Visible from '../Asset/Visible';
 import NotVisible from '../Asset/NotVisible';
 import { black400, black900, focus } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
+import { theme } from '../style';
 
 type inputType = 'text' | 'password';
 
@@ -12,7 +13,7 @@ interface InputType extends marginCssType {
     placeholder: string;
     width: number;
     unit?: string;
-    label: string;
+    label?: string;
 }
 
 export const Input: React.FC<InputType> = ({
@@ -48,7 +49,6 @@ const Container = styled.div<{ margin?: marginType | marginType[]; label?: strin
 `;
 
 const InputLabel = styled.label`
-    height: 65px;
     font-size: 14px;
     line-height: 17px;
     color: ${black900};
@@ -57,13 +57,11 @@ const InputLabel = styled.label`
 const LabelText = styled.div`
     margin-left: 5px;
     margin-bottom: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    color: ${black900};
+    ${theme.font.body5};
 `;
 
 const InputWrapper = styled.div<{ width: number }>`
-    width: ${({ width }) => width}rem;
+    width: ${({ width }) => width}px;
     position: relative;
     border: none;
 `;
@@ -87,9 +85,8 @@ const InputBox = styled.input`
 `;
 
 const UnitText = styled.div`
-    height: 20px;
     position: absolute;
-    right: 0px;
+    right: 12px;
     margin-top: 12px;
-    font-size: 16px;
+    ${theme.font.body3};
 `;
