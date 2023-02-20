@@ -15,7 +15,7 @@ interface InputType extends marginCssType {
     unit?: string;
     label?: string;
     value?: string | number;
-    onChange?: () => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputType> = ({
