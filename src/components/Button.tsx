@@ -32,7 +32,6 @@ interface ButtonProps extends marginCssType {
     disabled?: boolean;
     /** 만약 아이콘 하나만 쓰는 거라면 true로 해주세요. */
     icon?: boolean;
-    width?: number;
     cursor?: 'pointer' | 'auto' | 'default';
     onClick: () => void;
 }
@@ -42,7 +41,6 @@ export const Button: React.FC<ButtonProps> = ({
     color = 'black',
     disabled = false,
     icon = false,
-    width,
     children,
     onClick,
     margin,
@@ -56,8 +54,7 @@ export const Button: React.FC<ButtonProps> = ({
             cursor={cursor ?? 'pointer'}
             margin={margin ?? [0, 0]}
             disabled={disabled}
-            icon={icon}
-            width={width ?? 80}>
+            icon={icon}>
             {children}
         </Wrapper>
     );
@@ -65,7 +62,7 @@ export const Button: React.FC<ButtonProps> = ({
 
 const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children'>>>`
     cursor: ${({ disabled }) => disabled && 'no-drop'};
-    width: ${({ icon, width }) => (icon ? 42 : width)}px;
+    width: ${({ icon }) => (icon ? '42px' : 'auto')};
     height: 42px;
     display: flex;
     flex-direction: row;
