@@ -27,7 +27,7 @@ export const Textarea: React.FC<InputProps> = ({
         onChange(e);
     };
     return (
-        <Container margin={margin}>
+        <Container margin={margin} width={width}>
             <Label>
                 <InfoLabel width={width}>
                     {label}
@@ -47,7 +47,8 @@ export const Textarea: React.FC<InputProps> = ({
     );
 };
 
-const Container = styled.div<{ margin?: marginType | marginType[] }>`
+const Container = styled.div<{ margin?: marginType | marginType[]; width: number | '100%' }>`
+    width: ${({ width }) => (width === '100%' ? '100%' : `${width}rem`)};
     ${({ margin }) => marginToCss({ margin })};
     height: 323px;
 `;
