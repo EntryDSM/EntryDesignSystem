@@ -11,7 +11,7 @@ type inputType = 'text' | 'password';
 interface InputType extends marginCssType {
     type: inputType;
     placeholder: string;
-    width: number;
+    width: number | '100%';
     unit?: string;
     label?: string;
     value?: string | number;
@@ -69,8 +69,8 @@ const LabelText = styled.div`
     ${theme.font.body5};
 `;
 
-const InputWrapper = styled.div<{ width: number }>`
-    width: ${({ width }) => width}px;
+const InputWrapper = styled.div<{ width: number | '100%' }>`
+    width: ${({ width }) => (width === '100%' ? '100%' : `${width}px`)};
     position: relative;
     border: none;
 `;

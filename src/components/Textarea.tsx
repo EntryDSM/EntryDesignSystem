@@ -5,7 +5,7 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 interface InputProps extends marginCssType {
     placeholder: string;
-    width: number;
+    width: number | '100%';
     label?: string;
     limit: number;
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -60,8 +60,8 @@ const Label = styled.label`
     font-size: 14px;
 `;
 
-const InfoLabel = styled.div<{ width: number }>`
-    width: ${({ width }) => width}rem;
+const InfoLabel = styled.div<{ width: number | '100%' }>`
+    width: ${({ width }) => (width === '100%' ? '100%' : `${width}rem`)};
     margin-left: 5px;
     margin-bottom: 6px;
     display: flex;
@@ -76,8 +76,8 @@ const TextCount = styled.span`
     color: ${black400};
 `;
 
-const TextBox = styled.textarea<{ width: number }>`
-    width: ${({ width }) => width}rem;
+const TextBox = styled.textarea<{ width: number | '100%' }>`
+    width: ${({ width }) => (width === '100%' ? '100%' : `${width}rem`)};
     position: absolute;
     height: 300px;
     border: 1px solid ${black400};
