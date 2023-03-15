@@ -15,7 +15,7 @@ interface InputProps extends marginCssType {
 export const Textarea: React.FC<InputProps> = ({
     label = 'title',
     placeholder = 'Placeholder',
-    width = 500,
+    width = 60,
     limit = 300,
     onChange,
     value,
@@ -54,6 +54,7 @@ const Container = styled.div<{ margin?: marginType | marginType[]; width: number
 `;
 
 const Label = styled.label`
+    position: relative;
     height: 65px;
     font-size: 14px;
     line-height: 17px;
@@ -78,8 +79,8 @@ const TextCount = styled.span`
 `;
 
 const TextBox = styled.textarea<{ width: number | '100%' }>`
-    width: ${({ width }) => (width === '100%' ? '100%' : `${width}rem`)};
     position: absolute;
+    width: ${({ width }) => (width === '100%' ? '100%' : `${width}rem`)};
     height: 300px;
     border: 1px solid ${black400};
     border-radius: 5px;

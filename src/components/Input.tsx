@@ -70,8 +70,8 @@ const LabelText = styled.div`
 `;
 
 const InputWrapper = styled.div<{ width: number | '100%' }>`
-    width: ${({ width }) => (width === '100%' ? '100%' : `${width}px`)};
     position: relative;
+    width: ${({ width }) => (width === '100%' ? '100%' : `${width}px`)};
     border: none;
 `;
 
