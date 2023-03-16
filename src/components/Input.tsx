@@ -16,6 +16,7 @@ interface InputType extends marginCssType {
     label?: string;
     value?: string | number;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    name?: string;
 }
 
 export const Input: React.FC<InputType> = ({
@@ -27,6 +28,7 @@ export const Input: React.FC<InputType> = ({
     margin,
     onChange,
     value,
+    name,
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
@@ -35,6 +37,7 @@ export const Input: React.FC<InputType> = ({
                 {label && <LabelText>{label}</LabelText>}
                 <InputWrapper width={width}>
                     <InputBox
+                        name={name}
                         onChange={onChange}
                         value={value}
                         type={(isOpen && 'text') || type}
@@ -78,7 +81,7 @@ const InputWrapper = styled.div<{ width: number | '100%' }>`
 const InputBox = styled.input`
     position: absolute;
     width: 100%;
-    height: 40px;
+    height: 42px;
     border: 1px solid ${black400};
     border-radius: 5px;
     padding-left: 14px;
