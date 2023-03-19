@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { Icon, IconType } from './Icon';
 import * as F from '../style/font';
 import {
     black300,
@@ -19,19 +20,19 @@ import {
 } from '../style/color';
 import { marginCssType, marginToCss } from '../utils/margin';
 
-type kindType = 'contained' | 'rounded' | 'outlined' | 'delete';
+type kindType = 'contained' | 'rounded' | 'outlined' | 'delete' | 'icon';
 type colorType = 'black' | 'orange' | 'green' | 'delete';
 type ButtonEventType = 'enabled' | 'hover' | 'pressed' | 'disabled';
 
 interface ButtonProps extends marginCssType {
     /** delete 쓸때 무조건 kind랑 color를 둘다 delete로 설정하세요. */
+    /** 만약 아이콘 하나만 쓰는 거라면 kind에 icon으로 해주세요. */
     kind?: kindType;
     /** delete 쓸때 무조건 color랑 kind를 둘다 delete로 설정하세요. */
     color?: colorType;
     children?: ReactNode;
     disabled?: boolean;
-    /** 만약 아이콘 하나만 쓰는 거라면 true로 해주세요. */
-    icon?: boolean;
+    icon?: IconType;
     cursor?: 'pointer' | 'auto' | 'default';
     onClick: () => void;
 }
@@ -40,10 +41,10 @@ export const Button: React.FC<ButtonProps> = ({
     kind = 'contained',
     color = 'black',
     disabled = false,
-    icon = false,
     children,
     onClick,
     margin,
+    icon,
     cursor,
 }) => {
     return (
@@ -53,16 +54,16 @@ export const Button: React.FC<ButtonProps> = ({
             color={color}
             cursor={cursor ?? 'pointer'}
             margin={margin ?? [0, 0]}
-            disabled={disabled}
-            icon={icon}>
+            disabled={disabled}>
+            {icon && <Icon icon={icon} size={18} margin={['right', 3]} />}
             {children}
         </Wrapper>
     );
 };
 
-const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children'>>>`
+const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon'>>>`
     cursor: ${({ disabled }) => disabled && 'no-drop'};
-    width: ${({ icon }) => (icon ? '42px' : 'auto')};
+    width: ${({ kind }) => (kind === 'icon' ? '42px' : 'auto')};
     height: 42px;
     display: flex;
     flex-direction: row;
@@ -72,7 +73,7 @@ const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children'>
     border: none;
     border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
-    min-width: ${({ icon }) => (icon ? 42 : 80)}px;
+    min-width: ${({ kind }) => (kind === 'icon' ? 42 : 80)}px;
     cursor: ${({ cursor }) => cursor};
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};

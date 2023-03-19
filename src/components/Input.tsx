@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import Visible from '../Asset/Visible';
-import NotVisible from '../Asset/NotVisible';
+import Visible from '../style/icon/Visible';
+import NotVisible from '../style/icon/NotVisible';
 import { black400, black900, focus } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { theme } from '../style';

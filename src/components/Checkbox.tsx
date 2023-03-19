@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Check from '../Asset/Check';
+import Check from '../style/icon/Check';
 import { black50, black500, green500, orange500 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
