@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { marginCssType, marginToCss, marginType } from 'utils/margin';
+import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import * as C from '../style/color';
 import { icons } from '../style/icon';
 import { colorKeyOfType } from '../style/color';
