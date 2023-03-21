@@ -34,7 +34,7 @@ interface ButtonProps extends marginCssType {
     disabled?: boolean;
     icon?: IconType;
     cursor?: 'pointer' | 'auto' | 'default';
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
