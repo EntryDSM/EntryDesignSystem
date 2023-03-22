@@ -7,6 +7,7 @@ import {
     black600,
     black700,
     black900,
+    colorKeyOfType,
     error,
     green200,
     green300,
@@ -58,7 +59,16 @@ export const Button: React.FC<ButtonProps> = ({
             cursor={cursor ?? 'pointer'}
             margin={margin ?? [0, 0]}
             disabled={disabled}>
-            {icon && <Icon icon={icon} size={18} margin={['right', 3]} />}
+            {icon && (
+                <Icon
+                    icon={icon}
+                    color={
+                        colorGenerator[color][disabled ? 'disabled' : 'enabled'] as colorKeyOfType
+                    }
+                    size={18}
+                    margin={['right', 3]}
+                />
+            )}
             {children}
         </Wrapper>
     );
