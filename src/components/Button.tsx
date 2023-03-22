@@ -35,9 +35,11 @@ interface ButtonProps extends marginCssType {
     icon?: IconType;
     cursor?: 'pointer' | 'auto' | 'default';
     onClick: () => void;
+    className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
+    className,
     kind = 'contained',
     color = 'black',
     disabled = false,
@@ -49,6 +51,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
     return (
         <Wrapper
+            className={className}
             onClick={() => !disabled && onClick()}
             kind={kind}
             color={color}
@@ -61,7 +64,9 @@ export const Button: React.FC<ButtonProps> = ({
     );
 };
 
-const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon'>>>`
+const Wrapper = styled.button<
+    Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon' | 'className'>>
+>`
     cursor: ${({ disabled }) => disabled && 'no-drop'};
     width: ${({ kind }) => (kind === 'icon' ? '42px' : 'auto')};
     height: 42px;

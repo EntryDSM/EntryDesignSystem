@@ -9,6 +9,7 @@ import { theme } from '../style';
 type inputType = 'text' | 'password';
 
 interface InputType extends marginCssType {
+    className?: string;
     type: inputType;
     placeholder: string;
     width: number | '100%';
@@ -20,6 +21,7 @@ interface InputType extends marginCssType {
 }
 
 export const Input: React.FC<InputType> = ({
+    className,
     label,
     type,
     placeholder = 'Placeholder',
@@ -32,7 +34,7 @@ export const Input: React.FC<InputType> = ({
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
-        <Container margin={margin} label={label}>
+        <Container margin={margin} label={label} className={className}>
             <InputLabel>
                 {label && <LabelText>{label}</LabelText>}
                 <InputWrapper width={width}>
