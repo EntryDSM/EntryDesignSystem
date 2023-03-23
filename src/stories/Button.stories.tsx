@@ -26,8 +26,8 @@ Outlined.args = {
 export const Rounded = Template.bind({});
 
 Rounded.args = {
-    kind: 'rounded',
-    children: 'button',
+    kind: ['icon', 'rounded'],
+    icon: 'Check',
 };
 
 export const Deletee = Template.bind({});

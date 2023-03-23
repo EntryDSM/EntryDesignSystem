@@ -21,7 +21,8 @@ import {
 } from '../style/color';
 import { marginCssType, marginToCss } from '../utils/margin';
 
-type kindType = 'contained' | 'rounded' | 'outlined' | 'delete' | 'icon';
+type DefaultKindType = 'contained' | 'rounded' | 'outlined' | 'delete';
+type kindType = DefaultKindType | ['icon', DefaultKindType];
 type colorType = 'black' | 'orange' | 'green' | 'delete';
 type ButtonEventType = 'enabled' | 'hover' | 'pressed' | 'disabled';
 
@@ -66,7 +67,7 @@ export const Button: React.FC<ButtonProps> = ({
                         colorGenerator[color][disabled ? 'disabled' : 'enabled'] as colorKeyOfType
                     }
                     size={18}
-                    margin={['right', 3]}
+                    margin={['right', children ? 3 : 0]}
                 />
             )}
             {children}
@@ -78,7 +79,7 @@ const Wrapper = styled.button<
     Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon' | 'className'>>
 >`
     cursor: ${({ disabled }) => disabled && 'no-drop'};
-    width: ${({ kind }) => (kind === 'icon' ? '42px' : 'auto')};
+    width: ${({ kind }) => (kind[0] === 'icon' ? '42px' : 'auto')};
     height: 42px;
     display: flex;
     flex-direction: row;
@@ -88,7 +89,7 @@ const Wrapper = styled.button<
     border: none;
     border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
-    min-width: ${({ kind }) => (kind === 'icon' ? 42 : 80)}px;
+    min-width: ${({ kind }) => (kind[0] === 'icon' ? 42 : 80)}px;
     cursor: ${({ cursor }) => cursor};
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};
