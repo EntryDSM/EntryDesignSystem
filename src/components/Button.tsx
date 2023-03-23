@@ -28,7 +28,7 @@ type ButtonEventType = 'enabled' | 'hover' | 'pressed' | 'disabled';
 
 interface ButtonProps extends marginCssType {
     /** delete 쓸때 무조건 kind랑 color를 둘다 delete로 설정하세요. */
-    /** 만약 아이콘 하나만 쓰는 거라면 kind에 icon으로 해주세요. */
+    /** 만약 아이콘 하나만 쓰는 거라면 kind에 배열 첫번재에 'icon', 2번째에 타입을 써주세요. */
     kind?: kindType;
     /** delete 쓸때 무조건 color랑 kind를 둘다 delete로 설정하세요. */
     color?: colorType;
@@ -87,18 +87,18 @@ const Wrapper = styled.button<
     align-items: center;
     padding: 11px 12px;
     border: none;
-    border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
+    border-radius: ${({ kind }) => (kind === 'rounded' || kind[1] === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
     min-width: ${({ kind }) => (kind[0] === 'icon' ? 42 : 80)}px;
     cursor: ${({ cursor }) => cursor};
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};
     color: ${({ kind, color, disabled }) =>
-        kind === 'outlined' || kind === 'delete'
+        kind === 'outlined' || kind === 'delete' || kind[1] === 'outlined' || kind[1] === 'delete'
             ? colorGenerator[color][disabled ? 'disabled' : 'enabled']
             : '#FFFFFF'};
     background-color: ${({ kind, color, disabled }) =>
-        kind === 'outlined' || kind === 'delete'
+        kind === 'outlined' || kind === 'delete' || kind[1] === 'outlined' || kind[1] === 'delete'
             ? '#FFFFFF'
             : colorGenerator[color][disabled ? 'disabled' : 'enabled']};
     border: 1px solid

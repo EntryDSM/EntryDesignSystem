@@ -23,10 +23,10 @@ Outlined.args = {
     children: 'button',
 };
 
-export const Rounded = Template.bind({});
+export const WithIcon = Template.bind({});
 
-Rounded.args = {
-    kind: ['icon', 'rounded'],
+WithIcon.args = {
+    kind: ['icon', 'outlined'],
     icon: 'Check',
 };
 
