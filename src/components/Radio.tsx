@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { black50, black500, orange400, orange500, green300, green500 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
@@ -6,29 +6,31 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 type colorType = 'orange' | 'green';
 
 interface RadioProps extends marginCssType {
-    title: string;
-    label: string[];
-    color: colorType;
+    className?: string;
+    title?: string;
+    RadioText?: string;
+    color?: colorType;
+    isClicked: boolean;
+    onClick: () => void;
 }
 
-export const Radio: React.FC<RadioProps> = ({ title, label, color = 'orange', margin }) => {
-    const [click, setClick] = useState<string>('');
-    const onClick = (id: string) => {
-        setClick(id);
-    };
+export const Radio: React.FC<RadioProps> = ({
+    title,
+    RadioText,
+    color = 'orange',
+    margin,
+    isClicked,
+    onClick,
+    className,
+}) => {
     return (
         <Container margin={margin}>
-            <Title>{title}</Title>
-            <LabelWrapper>
-                {label &&
-                    label.map((item) => (
-                        <Label onClick={() => onClick(item)} key={item}>
-                            <Border isClick={click === item} color={color} id={item}>
-                                {click === item && <Circle color={color} />}
-                            </Border>
-                            {item}
-                        </Label>
-                    ))}
+            {title && <Title>{title}</Title>}
+            <LabelWrapper onClick={onClick} className={className}>
+                <Border isClick={isClicked} color={color}>
+                    {isClicked && <Circle color={color} />}
+                </Border>
+                {RadioText}
             </LabelWrapper>
         </Container>
     );
@@ -44,27 +46,23 @@ const Title = styled.div`
 `;
 
 const LabelWrapper = styled.div`
+    cursor: pointer;
     display: flex;
     align-items: center;
-`;
-
-const Label = styled.div`
-    margin-right: 16px;
+    gap: 10px;
     font-size: 18px;
-    display: flex;
-    cursor: pointer;
+    font-weight: 400;
 `;
 
 const Border = styled.div<{ isClick: boolean; color: colorType }>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 26px;
     height: 26px;
     background-color: ${black50};
     border: 1px solid ${({ isClick, color }) => (isClick ? colorGenerator[color].border : black500)};
     border-radius: 13px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
 `;
 
 const Circle = styled.div<{ color: colorType }>`
