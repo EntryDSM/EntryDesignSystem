@@ -78,7 +78,7 @@ export const Button: React.FC<ButtonProps> = ({
 const Wrapper = styled.button<
     Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon' | 'className'>>
 >`
-    cursor: ${({ disabled }) => disabled && 'no-drop'};
+    cursor: ${({ cursor, disabled }) => (disabled ? 'no-drop' : cursor)};
     width: ${({ kind }) => (kind[0] === 'icon' ? '42px' : 'auto')};
     height: 42px;
     display: flex;
@@ -90,7 +90,6 @@ const Wrapper = styled.button<
     border-radius: ${({ kind }) => (kind === 'rounded' || kind[1] === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
     min-width: ${({ kind }) => (kind[0] === 'icon' ? 42 : 80)}px;
-    cursor: ${({ cursor }) => cursor};
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};
     color: ${({ kind, color, disabled }) =>
@@ -103,20 +102,22 @@ const Wrapper = styled.button<
             : colorGenerator[color][disabled ? 'disabled' : 'enabled']};
     border: 1px solid
         ${({ color, disabled }) => colorGenerator[color][disabled ? 'disabled' : 'enabled']};
-    :hover {
-        background-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'hover']};
-        border-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'hover']};
+
+    ${({ disabled, color }) =>
+        !disabled &&
+        `
+    &:hover {
+        background-color: ${colorGenerator[color].hover};
+        border-color: ${colorGenerator[color].hover};
         color: ${realWhite};
     }
-    :active {
-        background-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'pressed']};
-        border-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'pressed']};
+
+    &:active {å
+        background-color: ${colorGenerator[color].pressed};
+        border-color: ${colorGenerator[color].pressed};
         color: ${realWhite};
     }
+    `}
 `;
 
 const colorGenerator: Record<colorType, Record<ButtonEventType, string>> = {
