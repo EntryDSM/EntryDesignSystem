@@ -12,5 +12,7 @@ const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-    RadioText: 'asdfasdf',
+    label: 'asdfasdf',
+    value: 'asdf',
+    name: 'asdf',
 };

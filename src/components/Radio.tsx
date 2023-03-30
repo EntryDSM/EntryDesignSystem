@@ -8,30 +8,30 @@ type colorType = 'orange' | 'green';
 interface RadioProps extends marginCssType {
     className?: string;
     title?: string;
-    RadioText?: string;
     color?: colorType;
-    isClicked: boolean;
-    onClick: () => void;
+    label: string;
+    name: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Radio: React.FC<RadioProps> = ({
+    className,
     title,
-    RadioText,
     color = 'orange',
     margin,
-    isClicked,
-    onClick,
-    className,
+    label,
+    name,
+    value,
+    onChange,
 }) => {
     return (
-        <Container margin={margin}>
+        <Container margin={margin} className={className}>
             {title && <Title>{title}</Title>}
-            <LabelWrapper onClick={onClick} className={className}>
-                <Border isClick={isClicked} color={color}>
-                    {isClicked && <Circle color={color} />}
-                </Border>
-                {RadioText}
-            </LabelWrapper>
+            <Label>
+                <Input type="radio" color={color} value={value} name={name} onChange={onChange} />
+                {label}
+            </Label>
         </Container>
     );
 };
@@ -45,7 +45,7 @@ const Title = styled.div`
     font-size: 14px;
 `;
 
-const LabelWrapper = styled.div`
+const Label = styled.label`
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -54,23 +54,33 @@ const LabelWrapper = styled.div`
     font-weight: 400;
 `;
 
-const Border = styled.div<{ isClick: boolean; color: colorType }>`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const Input = styled.input<{ color: colorType }>`
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    display: grid;
+    place-content: center;
     width: 26px;
     height: 26px;
     background-color: ${black50};
-    border: 1px solid ${({ isClick, color }) => (isClick ? colorGenerator[color].border : black500)};
+    border: 1px solid ${black500};
     border-radius: 13px;
-`;
+    &:checked {
+        border: 1px solid ${({ color }) => colorGenerator[color].border};
+    }
+    &::before {
+        content: '';
+        width: 16px;
+        height: 16px;
+        border-radius: 8px;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em ${({ color }) => colorGenerator[color].circle};
+    }
 
-const Circle = styled.div<{ color: colorType }>`
-    width: 16px;
-    height: 16px;
-    background-color: ${({ color }) => colorGenerator[color].circle};
-    border: none;
-    border-radius: 8px;
+    &:checked::before {
+        transform: scale(1);
+    }
 `;
 
 const colorGenerator: Record<colorType, Record<string, string>> = {
