@@ -13,4 +13,5 @@ export const Primary = Template.bind({});
 
 Primary.args = {
     color: 'orange',
+    label: 'asdf',
 };
