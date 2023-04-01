@@ -8,6 +8,7 @@ type colorType = 'orange' | 'green';
 interface CheckboxProps extends marginCssType {
     className?: string;
     color?: colorType;
+    isChecked?: boolean;
     label: string;
     name: string;
     value: string;
@@ -15,9 +16,10 @@ interface CheckboxProps extends marginCssType {
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
+    margin,
     className,
     color = 'orange',
-    margin,
+    isChecked,
     label,
     name,
     value,
@@ -25,7 +27,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
     return (
         <Label margin={margin} className={className}>
-            <Box type="checkbox" color={color} name={name} value={value} onChange={onChange} />
+            <Box
+                type="checkbox"
+                checked={isChecked}
+                color={color}
+                name={name}
+                value={value}
+                onChange={onChange}
+            />
             {label}
         </Label>
     );

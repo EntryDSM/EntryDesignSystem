@@ -9,6 +9,7 @@ interface RadioProps extends marginCssType {
     className?: string;
     title?: string;
     color?: colorType;
+    isChecked: boolean;
     label: string;
     name: string;
     value: string;
@@ -16,10 +17,11 @@ interface RadioProps extends marginCssType {
 }
 
 export const Radio: React.FC<RadioProps> = ({
+    margin,
     className,
     title,
     color = 'orange',
-    margin,
+    isChecked,
     label,
     name,
     value,
@@ -29,7 +31,14 @@ export const Radio: React.FC<RadioProps> = ({
         <Container margin={margin} className={className}>
             {title && <Title>{title}</Title>}
             <Label>
-                <Input type="radio" color={color} value={value} name={name} onChange={onChange} />
+                <Input
+                    type="radio"
+                    color={color}
+                    checked={isChecked}
+                    value={value}
+                    name={name}
+                    onChange={onChange}
+                />
                 {label}
             </Label>
         </Container>
