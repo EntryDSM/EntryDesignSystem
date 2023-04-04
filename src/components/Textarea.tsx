@@ -10,6 +10,7 @@ interface InputProps extends marginCssType {
     limit: number;
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     value: string;
+    name?: string;
 }
 
 export const Textarea: React.FC<InputProps> = ({
@@ -20,6 +21,7 @@ export const Textarea: React.FC<InputProps> = ({
     onChange,
     value,
     margin,
+    name,
 }) => {
     const [totalText, setTotalText] = useState<number>(0);
     const totalOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -36,6 +38,7 @@ export const Textarea: React.FC<InputProps> = ({
                     </TextCount>
                 </InfoLabel>
                 <TextBox
+                    name={name}
                     width={width}
                     placeholder={placeholder}
                     onChange={totalOnChange}
