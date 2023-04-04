@@ -12,5 +12,7 @@ const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-    label: ['입학 공지사항', '예비 신입생 안내'],
+    label: 'asdfasdf',
+    value: 'asdf',
+    name: 'asdf',
 };

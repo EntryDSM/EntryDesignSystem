@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { black50, black500, orange400, orange500, green300, green500 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
@@ -6,30 +6,41 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 type colorType = 'orange' | 'green';
 
 interface RadioProps extends marginCssType {
-    title: string;
-    label: string[];
-    color: colorType;
+    className?: string;
+    title?: string;
+    color?: colorType;
+    isChecked: boolean;
+    label: string;
+    name: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Radio: React.FC<RadioProps> = ({ title, label, color = 'orange', margin }) => {
-    const [click, setClick] = useState<string>('');
-    const onClick = (id: string) => {
-        setClick(id);
-    };
+export const Radio: React.FC<RadioProps> = ({
+    margin,
+    className,
+    title,
+    color = 'orange',
+    isChecked,
+    label,
+    name,
+    value,
+    onChange,
+}) => {
     return (
-        <Container margin={margin}>
-            <Title>{title}</Title>
-            <LabelWrapper>
-                {label &&
-                    label.map((item) => (
-                        <Label onClick={() => onClick(item)} key={item}>
-                            <Border isClick={click === item} color={color} id={item}>
-                                {click === item && <Circle color={color} />}
-                            </Border>
-                            {item}
-                        </Label>
-                    ))}
-            </LabelWrapper>
+        <Container margin={margin} className={className}>
+            {title && <Title>{title}</Title>}
+            <Label>
+                <Input
+                    type="radio"
+                    color={color}
+                    checked={isChecked}
+                    value={value}
+                    name={name}
+                    onChange={onChange}
+                />
+                {label}
+            </Label>
         </Container>
     );
 };
@@ -43,36 +54,42 @@ const Title = styled.div`
     font-size: 14px;
 `;
 
-const LabelWrapper = styled.div`
+const Label = styled.label`
+    cursor: pointer;
     display: flex;
     align-items: center;
-`;
-
-const Label = styled.div`
-    margin-right: 16px;
+    gap: 10px;
     font-size: 18px;
-    display: flex;
-    cursor: pointer;
+    font-weight: 400;
 `;
 
-const Border = styled.div<{ isClick: boolean; color: colorType }>`
+const Input = styled.input<{ color: colorType }>`
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    display: grid;
+    place-content: center;
     width: 26px;
     height: 26px;
     background-color: ${black50};
-    border: 1px solid ${({ isClick, color }) => (isClick ? colorGenerator[color].border : black500)};
+    border: 1px solid ${black500};
     border-radius: 13px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-`;
+    &:checked {
+        border: 1px solid ${({ color }) => colorGenerator[color].border};
+    }
+    &::before {
+        content: '';
+        width: 16px;
+        height: 16px;
+        border-radius: 8px;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em ${({ color }) => colorGenerator[color].circle};
+    }
 
-const Circle = styled.div<{ color: colorType }>`
-    width: 16px;
-    height: 16px;
-    background-color: ${({ color }) => colorGenerator[color].circle};
-    border: none;
-    border-radius: 8px;
+    &:checked::before {
+        transform: scale(1);
+    }
 `;
 
 const colorGenerator: Record<colorType, Record<string, string>> = {

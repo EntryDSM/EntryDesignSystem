@@ -7,6 +7,7 @@ import {
     black600,
     black700,
     black900,
+    colorKeyOfType,
     error,
     green200,
     green300,
@@ -20,13 +21,14 @@ import {
 } from '../style/color';
 import { marginCssType, marginToCss } from '../utils/margin';
 
-type kindType = 'contained' | 'rounded' | 'outlined' | 'delete' | 'icon';
+type DefaultKindType = 'contained' | 'rounded' | 'outlined' | 'delete';
+type kindType = DefaultKindType | ['icon', DefaultKindType];
 type colorType = 'black' | 'orange' | 'green' | 'delete';
 type ButtonEventType = 'enabled' | 'hover' | 'pressed' | 'disabled';
 
 interface ButtonProps extends marginCssType {
     /** delete 쓸때 무조건 kind랑 color를 둘다 delete로 설정하세요. */
-    /** 만약 아이콘 하나만 쓰는 거라면 kind에 icon으로 해주세요. */
+    /** 만약 아이콘 하나만 쓰는 거라면 kind에 배열 첫번재에 'icon', 2번째에 타입을 써주세요. */
     kind?: kindType;
     /** delete 쓸때 무조건 color랑 kind를 둘다 delete로 설정하세요. */
     color?: colorType;
@@ -35,9 +37,11 @@ interface ButtonProps extends marginCssType {
     icon?: IconType;
     cursor?: 'pointer' | 'auto' | 'default';
     onClick: () => void;
+    className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
+    className,
     kind = 'contained',
     color = 'black',
     disabled = false,
@@ -49,21 +53,33 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
     return (
         <Wrapper
+            className={className}
             onClick={() => !disabled && onClick()}
             kind={kind}
             color={color}
             cursor={cursor ?? 'pointer'}
             margin={margin ?? [0, 0]}
             disabled={disabled}>
-            {icon && <Icon icon={icon} size={18} margin={['right', 3]} />}
+            {icon && (
+                <Icon
+                    icon={icon}
+                    color={
+                        colorGenerator[color][disabled ? 'disabled' : 'enabled'] as colorKeyOfType
+                    }
+                    size={18}
+                    margin={['right', children ? 3 : 0]}
+                />
+            )}
             {children}
         </Wrapper>
     );
 };
 
-const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon'>>>`
-    cursor: ${({ disabled }) => disabled && 'no-drop'};
-    width: ${({ kind }) => (kind === 'icon' ? '42px' : 'auto')};
+const Wrapper = styled.button<
+    Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon' | 'className'>>
+>`
+    cursor: ${({ cursor, disabled }) => (disabled ? 'no-drop' : cursor)};
+    width: ${({ kind }) => (kind[0] === 'icon' ? '42px' : 'auto')};
     height: 42px;
     display: flex;
     flex-direction: row;
@@ -71,36 +87,37 @@ const Wrapper = styled.button<Required<Omit<ButtonProps, 'onClick' | 'children' 
     align-items: center;
     padding: 11px 12px;
     border: none;
-    border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
+    border-radius: ${({ kind }) => (kind === 'rounded' || kind[1] === 'rounded' ? 21 : 5)}px;
     max-width: 1030px;
-    min-width: ${({ kind }) => (kind === 'icon' ? 42 : 80)}px;
-    cursor: ${({ cursor }) => cursor};
+    min-width: ${({ kind }) => (kind[0] === 'icon' ? 42 : 80)}px;
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};
     color: ${({ kind, color, disabled }) =>
-        kind === 'outlined' || kind === 'delete'
+        kind === 'outlined' || kind === 'delete' || kind[1] === 'outlined' || kind[1] === 'delete'
             ? colorGenerator[color][disabled ? 'disabled' : 'enabled']
             : '#FFFFFF'};
     background-color: ${({ kind, color, disabled }) =>
-        kind === 'outlined' || kind === 'delete'
+        kind === 'outlined' || kind === 'delete' || kind[1] === 'outlined' || kind[1] === 'delete'
             ? '#FFFFFF'
             : colorGenerator[color][disabled ? 'disabled' : 'enabled']};
     border: 1px solid
         ${({ color, disabled }) => colorGenerator[color][disabled ? 'disabled' : 'enabled']};
-    :hover {
-        background-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'hover']};
-        border-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'hover']};
+
+    ${({ disabled, color }) =>
+        !disabled &&
+        `
+    &:hover {
+        background-color: ${colorGenerator[color].hover};
+        border-color: ${colorGenerator[color].hover};
         color: ${realWhite};
     }
-    :active {
-        background-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'pressed']};
-        border-color: ${({ color, disabled }) =>
-            colorGenerator[color][disabled ? 'disabled' : 'pressed']};
+
+    &:active {å
+        background-color: ${colorGenerator[color].pressed};
+        border-color: ${colorGenerator[color].pressed};
         color: ${realWhite};
     }
+    `}
 `;
 
 const colorGenerator: Record<colorType, Record<ButtonEventType, string>> = {

@@ -4,6 +4,7 @@ import { black400, black900, focus } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 interface InputProps extends marginCssType {
+    className?: string;
     placeholder: string;
     width: number | '100%';
     label?: string;
@@ -14,6 +15,7 @@ interface InputProps extends marginCssType {
 }
 
 export const Textarea: React.FC<InputProps> = ({
+    className,
     label = 'title',
     placeholder = 'Placeholder',
     width = 60,
@@ -29,7 +31,7 @@ export const Textarea: React.FC<InputProps> = ({
         onChange(e);
     };
     return (
-        <Container margin={margin} width={width}>
+        <Container margin={margin} width={width} className={className}>
             <Label>
                 <InfoLabel width={width}>
                     {label}

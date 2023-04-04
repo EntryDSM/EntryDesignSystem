@@ -6,6 +6,7 @@ import { icons } from '../style/icon';
 import { colorKeyOfType } from '../style/color';
 
 export interface IconProps extends marginCssType {
+    className?: string;
     icon: IconType;
     size?: number;
     color?: colorKeyOfType;
@@ -14,6 +15,7 @@ export interface IconProps extends marginCssType {
 }
 
 export const Icon: FunctionComponent<IconProps> = ({
+    className,
     icon,
     size = 24,
     color,
@@ -24,6 +26,7 @@ export const Icon: FunctionComponent<IconProps> = ({
 }: IconProps) => {
     return (
         <Svg
+            className={className}
             viewBox="0 0 24 24"
             onClick={onClick}
             width={size}
