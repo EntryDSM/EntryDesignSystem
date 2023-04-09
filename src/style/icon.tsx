@@ -16,6 +16,7 @@ import Internet from './icon/Internet';
 import LeftArrow from './icon/LeftArrow';
 import LockKey from './icon/LockKey';
 import Logout from './icon/Logout';
+import Magnifier from './icon/Magnifier';
 import Megaphone from './icon/Megaphone';
 import MorePage from './icon/MorePage';
 import NavigationArrow from './icon/NavigationArrow';
@@ -50,6 +51,7 @@ export const icons = {
     LeftArrow: <LeftArrow />,
     LockKey: <LockKey />,
     Logout: <Logout />,
+    Magnifier: <Magnifier />,
     Megaphone: <Megaphone />,
     MorePage: <MorePage />,
     NavigationArrow: <NavigationArrow />,
