@@ -42,6 +42,8 @@ export const Input: React.FC<InputType> = ({
                 {label && <LabelText>{label}</LabelText>}
                 <InputWrapper width={width}>
                     <InputBox
+                        unit={unit}
+                        icon={icon}
                         name={name}
                         onChange={onChange}
                         value={value}
@@ -88,14 +90,15 @@ const InputWrapper = styled.div<{ width: number | '100%' }>`
     border: none;
 `;
 
-const InputBox = styled.input`
+const InputBox = styled.input<{ unit?: string; icon?: IconType }>`
     position: absolute;
     width: 100%;
     height: 42px;
     border: 1px solid ${black400};
     border-radius: 5px;
-    padding-left: 14px;
+    padding: 14px;
     outline: none;
+    padding-right: ${({ unit, icon }) => (unit || icon) && '34px'};
     color: ${black900};
     &:focus {
         border-color: ${focus};
