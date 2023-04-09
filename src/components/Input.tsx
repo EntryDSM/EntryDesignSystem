@@ -5,6 +5,7 @@ import NotVisible from '../style/icon/NotVisible';
 import { black400, black900, focus } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { theme } from '../style';
+import { IconType } from './Icon';
 
 type inputType = 'text' | 'password';
 
@@ -13,7 +14,7 @@ interface InputType extends marginCssType {
     type: inputType;
     placeholder: string;
     width: number | '100%';
-    unit?: string;
+    unit?: string | IconType;
     label?: string;
     value?: string | number;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
