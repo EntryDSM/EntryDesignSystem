@@ -9,7 +9,7 @@ interface TextProps extends marginCssType {
     className?: string;
     children?: ReactNode;
     color: colorKeyOfType;
-    display?: 'inline' | 'inline-block' | 'block';
+    display?: 'inline' | 'inline-block' | 'block' | 'flex';
     size: fontKeyOfType;
     onClick?: () => void;
     cursor?: 'pointer' | 'auto' | 'default';
@@ -47,6 +47,7 @@ export const Text = ({
 
 const Wrapper = styled.div<TextProps>`
     display: ${({ display }) => display};
+    align-items: center;
     color: ${({ color }) => theme.color[color]};
     ${({ size }) => theme.font[size]};
     text-align: ${({ align }) => align};
