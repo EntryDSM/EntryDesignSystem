@@ -7,7 +7,7 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { theme } from '../style';
 import { Icon, IconType } from './Icon';
 
-type inputType = 'text' | 'password';
+type inputType = 'text' | 'password' | 'number';
 
 interface InputType extends marginCssType {
     className?: string;
