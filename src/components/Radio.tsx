@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { black50, black500, orange400, orange500, green300, green500 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
@@ -10,7 +10,7 @@ interface RadioProps extends marginCssType {
     title?: string;
     color?: colorType;
     isChecked: boolean;
-    label: string;
+    label: ReactNode;
     name: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

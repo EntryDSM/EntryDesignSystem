@@ -1,6 +1,7 @@
 export * from './style';
 export * from './components/Button';
 export * from './components/Checkbox';
+export * from './components/Dropdown';
 export * from './components/Input';
 export * from './components/Radio';
 export * from './components/Spinner';
