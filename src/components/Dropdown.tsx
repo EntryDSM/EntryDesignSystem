@@ -18,7 +18,14 @@ interface DropdownProps extends marginCssType {
     onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ name, width, unit, options, onChange, margin }) => {
+export const Dropdown: React.FC<DropdownProps> = ({
+    name,
+    width,
+    unit,
+    options,
+    onChange,
+    margin,
+}) => {
     return (
         <Container margin={margin}>
             <DropdownLabel>
@@ -43,8 +50,6 @@ const Dropdown: React.FC<DropdownProps> = ({ name, width, unit, options, onChang
         </Container>
     );
 };
-
-export default Dropdown;
 
 const Container = styled.div<{ margin?: marginType | marginType[]; label?: string }>`
     ${({ margin }) => marginToCss({ margin })};
