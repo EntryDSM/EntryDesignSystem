@@ -48,7 +48,7 @@ export default Dropdown;
 
 const Container = styled.div<{ margin?: marginType | marginType[]; label?: string }>`
     ${({ margin }) => marginToCss({ margin })};
-    height: 42px;D
+    height: 42px;
 `;
 
 const DropdownLabel = styled.label`
