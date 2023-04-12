@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { black900 } from 'style/color';
-import { marginCssType, marginToCss, marginType } from 'utils/margin';
+import { black900 } from '../style/color';
+import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { Icon } from './Icon';
 import { Text } from './Text';
 
