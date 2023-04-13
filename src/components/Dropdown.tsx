@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { black900 } from '../style/color';
+import { black300, black900 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { Icon } from './Icon';
 import { Text } from './Text';
@@ -14,6 +14,7 @@ interface DropdownProps extends marginCssType {
     name: string;
     width: number;
     unit?: string;
+    disabled?: boolean;
     options: OptionProps[];
     onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -22,15 +23,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
     name,
     width,
     unit,
+    disabled = false,
     options,
     onChange,
     margin,
 }) => {
     return (
-        <Container margin={margin}>
-            <DropdownLabel>
-                <DropdownWrapper width={width}>
-                    <Select name={name} onChange={onChange}>
+        <Container margin={margin} width={width}>
+            <DropdownWrapper>
+                <DropdownLabel>
+                    <Select name={name} width={width} onChange={onChange} disabled={disabled}>
                         {options.map((item) => (
                             <Option key={item.value} value={item.value}>
                                 {item.label}
@@ -38,42 +40,40 @@ export const Dropdown: React.FC<DropdownProps> = ({
                         ))}
                     </Select>
                     <IconBlock>
-                        <Icon icon="DownArrow" color="black900" />
+                        <Icon icon="DownArrow" color={disabled ? 'black300' : 'black900'} />
                     </IconBlock>
-                </DropdownWrapper>
-                {unit && (
-                    <Text color="black900" size="body2">
-                        {unit}
-                    </Text>
-                )}
-            </DropdownLabel>
+                </DropdownLabel>
+            </DropdownWrapper>
+            {unit && (
+                <Text color={disabled ? 'black300' : 'black900'} size="body2">
+                    {unit}
+                </Text>
+            )}
         </Container>
     );
 };
 
-const Container = styled.div<{ margin?: marginType | marginType[]; label?: string }>`
+const Container = styled.div<{ margin?: marginType | marginType[]; width: number }>`
     ${({ margin }) => marginToCss({ margin })};
-    height: 42px;
-`;
-
-const DropdownLabel = styled.label`
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-`;
-
-const DropdownWrapper = styled.div<{ width?: number }>`
-    position: relative;
     width: ${({ width }) => width}px;
+    height: 42px;
 `;
 
-const Select = styled.select`
+const DropdownWrapper = styled.div``;
+
+const DropdownLabel = styled.label``;
+
+const Select = styled.select<{ width: number }>`
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
-    width: 100%;
+    width: ${({ width }) => width}px;
     height: 42px;
-    border: 1px solid ${black900};
+    border: 1px solid ${({ disabled }) => (disabled ? black300 : black900)};
     border-radius: 5px;
     padding: 0px 15px;
 `;
