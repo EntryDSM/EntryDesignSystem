@@ -13,11 +13,30 @@ export const Primary = Template.bind({});
 
 Primary.args = {
     width: 200,
-    options: [
-        { value: 'helloasdf', label: 'hello' },
-        { value: 'annyungasdf', label: 'annyung' },
-        { value: 'gutentakasdf', label: 'gutentak' },
-    ],
+    options: ['helloasdf', 'annyungasdf', 'gutentakasdf'],
     name: 'this is whole name',
     unit: '년',
+    onChange: (e) => console.log(e),
+};
+
+export const ManyOptions = Template.bind({});
+
+ManyOptions.args = {
+    width: 200,
+    options: [
+        '옵션1',
+        '옵션2',
+        '옵션3',
+        '옵션4',
+        '옵션5',
+        '옵션6',
+        '옵션7',
+        '옵션8',
+        '옵션9',
+        '옵션10',
+        '옵션11',
+        '옵션12',
+    ],
+    name: 'this is whole name',
+    onChange: (e) => console.log(e),
 };
