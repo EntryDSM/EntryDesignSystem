@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useEffect, useRef, useState } from 'react';
 import { black100, black200, black300, black400, black900 } from '../style/color';
@@ -26,7 +27,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [data, setData] = useState<string>('없음');
     const outsideRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
         function handleClickOutside(event: any) {
             if (outsideRef.current && !outsideRef.current.contains(event.target)) {
@@ -34,12 +34,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
             }
         }
         document.addEventListener('click', handleClickOutside);
-
         return () => {
             document.removeEventListener('click', handleClickOutside);
         };
     }, [outsideRef]);
-
     return (
         <Container margin={margin} ref={outsideRef}>
             <DropdownContainer>
@@ -57,18 +55,20 @@ export const Dropdown: React.FC<DropdownProps> = ({
             </DropdownContainer>
             {isOpen && options && (
                 <Options width={width}>
-                    {options.map((label) => (
-                        <Option
-                            key={label}
-                            width={width}
-                            onClick={() => {
-                                setIsOpen(false);
-                                setData(label);
-                                onChange(label);
-                            }}>
-                            {label}
-                        </Option>
-                    ))}
+                    {options
+                        .filter((item) => data !== item)
+                        .map((label) => (
+                            <Option
+                                key={label}
+                                width={width}
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    setData(label);
+                                    onChange(label);
+                                }}>
+                                {label}
+                            </Option>
+                        ))}
                 </Options>
             )}
         </Container>
@@ -90,17 +90,18 @@ const DropdownContainer = styled.div`
 `;
 
 const Selector = styled.div<{ width: number; disabled?: boolean }>`
-    cursor: ${({ disabled }) => (disabled ? 'no-drop' : 'pointer')};
+    cursor: pointer;
     position: relative;
     display: flex;
     align-items: center;
     width: ${({ width }) => width}px;
     height: 38px;
+    background-color: white;
+    border: 1px solid ${black900};
+    border-radius: 5px;
     font-size: 16px;
     font-weight: 400;
-    color: ${({ disabled }) => (disabled ? black300 : black900)};
-    border: 1px solid ${({ disabled }) => (disabled ? black300 : black900)};
-    border-radius: 5px;
+    color: ${black900};
     padding-left: 12px;
     &:hover {
         background-color: ${black100};
@@ -108,13 +109,24 @@ const Selector = styled.div<{ width: number; disabled?: boolean }>`
     &:active {
         background-color: ${black200};
     }
+    ${({ disabled }) =>
+        disabled &&
+        css`
+            cursor: not-allowed;
+            color: ${black300};
+            border-color: ${black300};
+            &:hover,
+            &:active {
+                background-color: white;
+            }
+        `}
 `;
 
 const CheckSvg = styled.div<{ isOpen: boolean }>`
     position: absolute;
     top: 5px;
     right: 10px;
-    rotate: ${({ isOpen }) => (isOpen ? 0 : -180)}deg;
+    rotate: ${({ isOpen }) => (isOpen ? 180 : 0)}deg;
     transition: 0.2s;
 `;
 
@@ -123,6 +135,7 @@ const Options = styled.div<{ width: number }>`
     flex-direction: column;
     width: ${({ width }) => width}px;
     max-height: 160px;
+    background-color: white;
     border: 1px solid ${black400};
     border-radius: 5px;
     margin-top: 5px;
