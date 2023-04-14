@@ -13,7 +13,7 @@ export const Primary = Template.bind({});
 
 Primary.args = {
     width: 200,
-    options: ['helloasdf', 'annyungasdf', 'gutentakasdf'],
+    options: ['helloasdf'],
     name: 'this is whole name',
     unit: '년',
     onChange: (e) => console.log(e),

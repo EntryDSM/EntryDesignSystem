@@ -38,6 +38,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
             document.removeEventListener('click', handleClickOutside);
         };
     }, [outsideRef]);
+    useEffect(() => {
+        options.unshift('없음');
+    }, []);
     return (
         <Container margin={margin} ref={outsideRef}>
             <DropdownContainer>
@@ -140,6 +143,7 @@ const Options = styled.div<{ width: number }>`
     border-radius: 5px;
     margin-top: 5px;
     overflow: scroll;
+    z-index: 10;
 `;
 
 const Option = styled.div<{ width: number }>`
@@ -149,6 +153,7 @@ const Option = styled.div<{ width: number }>`
     align-items: center;
     width: 100%;
     min-height: 35px;
+    background-color: white;
     font-size: 16px;
     font-weight: 400;
     color: ${black900};
@@ -160,6 +165,7 @@ const Option = styled.div<{ width: number }>`
         width: ${({ width }) => width - 14}px;
         height: 1px;
         background-color: ${black200};
+        z-index: 11;
     }
     &:hover {
         background-color: ${black200};
