@@ -83,6 +83,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 const Container = styled.div<{ margin?: marginType | marginType[] }>`
     ${({ margin }) => marginToCss({ margin })};
     height: 42px;
+    z-index: 99;
 `;
 
 const DropdownContainer = styled.div`
@@ -92,6 +93,7 @@ const DropdownContainer = styled.div`
     font-size: 18px;
     font-weight: 400;
     color: ${black900};
+    z-index: 99;
 `;
 
 const Selector = styled.div<{ width: number; disabled?: boolean }>`
@@ -108,7 +110,7 @@ const Selector = styled.div<{ width: number; disabled?: boolean }>`
     font-weight: 400;
     color: ${black900};
     padding-left: 12px;
-    z-index: 10;
+    z-index: 99;
     &:hover {
         background-color: ${black100};
     }
@@ -137,6 +139,7 @@ const CheckSvg = styled.div<{ isOpen: boolean }>`
 `;
 
 const Options = styled.div<{ width: number }>`
+    position: relative;
     display: flex;
     flex-direction: column;
     width: ${({ width }) => width}px;
@@ -144,7 +147,7 @@ const Options = styled.div<{ width: number }>`
     background-color: white;
     border: 1px solid ${black400};
     border-radius: 5px;
-    margin-top: 5px;
+    margin-top: 4px;
     overflow: scroll;
     z-index: 99;
 `;
@@ -153,6 +156,7 @@ const OptionWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 99;
 `;
 
 const Option = styled.div<{ width: number }>`
@@ -179,6 +183,7 @@ const Option = styled.div<{ width: number }>`
 
 const OptionLine = styled.div`
     width: 92%;
-    height: none;
+    height: 1px;
     border: 0.5px solid ${black200};
+    z-index: 99;
 `;

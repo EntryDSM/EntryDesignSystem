@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Dropdown } from '../components/Dropdown';
+import { Input } from '../components/Input';
 
 export default {
     title: 'Component/Dropdown',
@@ -39,4 +40,31 @@ ManyOptions.args = {
     ],
     name: 'this is whole name',
     onChange: (e) => console.log(e),
+};
+
+export const CheckInput = () => {
+    const [value, setValue] = useState('');
+    return (
+        <>
+            <div style={{ marginLeft: '50px' }}>
+                <Dropdown
+                    className="birthday"
+                    width={85}
+                    onChange={(e) => console.log(e)}
+                    options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']}
+                    unit="월"
+                />
+            </div>
+            <div>
+                <Input
+                    type="text"
+                    placeholder="보호자명"
+                    width={230}
+                    name="parent_name"
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                />
+            </div>
+        </>
+    );
 };
