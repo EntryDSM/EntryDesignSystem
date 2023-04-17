@@ -60,17 +60,19 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 <Options width={width}>
                     {options
                         .filter((item) => data !== item)
-                        .map((label) => (
-                            <Option
-                                key={label}
-                                width={width}
-                                onClick={() => {
-                                    setIsOpen(false);
-                                    setData(label);
-                                    onChange(label);
-                                }}>
-                                {label}
-                            </Option>
+                        .map((label, index) => (
+                            <OptionWrapper key={label}>
+                                <Option
+                                    width={width}
+                                    onClick={() => {
+                                        setIsOpen(false);
+                                        setData(label);
+                                        onChange(label);
+                                    }}>
+                                    {label}
+                                </Option>
+                                {index !== options.length - 2 && <OptionLine />}
+                            </OptionWrapper>
                         ))}
                 </Options>
             )}
@@ -106,6 +108,7 @@ const Selector = styled.div<{ width: number; disabled?: boolean }>`
     font-weight: 400;
     color: ${black900};
     padding-left: 12px;
+    z-index: 10;
     &:hover {
         background-color: ${black100};
     }
@@ -137,17 +140,22 @@ const Options = styled.div<{ width: number }>`
     display: flex;
     flex-direction: column;
     width: ${({ width }) => width}px;
-    max-height: 160px;
+    max-height: 165px;
     background-color: white;
     border: 1px solid ${black400};
     border-radius: 5px;
     margin-top: 5px;
     overflow: scroll;
-    z-index: 10;
+    z-index: 99;
+`;
+
+const OptionWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const Option = styled.div<{ width: number }>`
-    position: relative;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -157,34 +165,20 @@ const Option = styled.div<{ width: number }>`
     font-size: 16px;
     font-weight: 400;
     color: ${black900};
-    padding: 5px;
-    &::after {
-        content: '';
-        position: absolute;
-        top: 35px;
-        width: ${({ width }) => width - 14}px;
-        height: 1px;
-        background-color: ${black200};
-        z-index: 11;
-    }
+    padding-left: 15px;
+    z-index: 99;
     &:hover {
         background-color: ${black200};
-        &::after {
-            content: none;
-        }
+        scale: 1.05;
+        transition: scale 0.3s;
     }
     &:active {
         background-color: ${black300};
     }
-    &:first-of-type {
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-    }
-    &:last-child {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        &::after {
-            content: none;
-        }
-    }
+`;
+
+const OptionLine = styled.div`
+    width: 92%;
+    height: none;
+    border: 0.5px solid ${black200};
 `;
