@@ -25,7 +25,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     margin,
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [data, setData] = useState<string>('없음');
+    const [data, setData] = useState<string>(options[0]);
     const outsideRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         function handleClickOutside(event: any) {
@@ -38,9 +38,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
             document.removeEventListener('click', handleClickOutside);
         };
     }, [outsideRef]);
-    useEffect(() => {
-        options.unshift('없음');
-    }, []);
     return (
         <Container margin={margin} ref={outsideRef}>
             <DropdownContainer>
@@ -133,7 +130,7 @@ const Selector = styled.div<{ width: number; disabled?: boolean }>`
 const CheckSvg = styled.div<{ isOpen: boolean }>`
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 5px;
     rotate: ${({ isOpen }) => (isOpen ? 180 : 0)}deg;
     transition: 0.2s;
 `;
@@ -149,14 +146,14 @@ const Options = styled.div<{ width: number }>`
     border-radius: 5px;
     margin-top: 4px;
     overflow: scroll;
-    z-index: 99;
+    z-index: 100;
 `;
 
 const OptionWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 99;
+    z-index: 100;
 `;
 
 const Option = styled.div<{ width: number }>`
@@ -170,7 +167,7 @@ const Option = styled.div<{ width: number }>`
     font-weight: 400;
     color: ${black900};
     padding-left: 15px;
-    z-index: 99;
+    z-index: 100;
     &:hover {
         background-color: ${black200};
         scale: 1.05;
@@ -185,5 +182,5 @@ const OptionLine = styled.div`
     width: 92%;
     height: 1px;
     border: 0.5px solid ${black200};
-    z-index: 99;
+    z-index: 100;
 `;

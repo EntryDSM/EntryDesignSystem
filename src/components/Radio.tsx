@@ -10,7 +10,7 @@ interface RadioProps extends marginCssType {
     title?: string;
     color?: colorType;
     isChecked: boolean;
-    label: ReactNode;
+    label: string;
     name: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
