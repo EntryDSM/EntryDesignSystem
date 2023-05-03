@@ -9,8 +9,8 @@ export default {
 
 export const Primary = () => {
     const [radioValue, setRadioValue] = useState('');
-    const onClick = (e) => {
-        const { value } = e.target;
+    const onClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+        const { value } = e.currentTarget;
         setRadioValue(value);
         console.log(value);
     };
@@ -20,14 +20,14 @@ export const Primary = () => {
                 isChecked={radioValue === 'asdf'}
                 name="asdf"
                 value="asdf"
-                onChange={onClick}
+                onClick={onClick}
                 label="asdf"
             />
             <Radio
                 isChecked={radioValue === 'hello'}
                 name="asdf"
                 value="hello"
-                onChange={onClick}
+                onClick={onClick}
                 label="hello"
             />
         </>

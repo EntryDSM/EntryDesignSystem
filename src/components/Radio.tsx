@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { black50, black500, orange400, orange500, green300, green500 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
@@ -13,7 +13,7 @@ interface RadioProps extends marginCssType {
     label: string;
     name: string;
     value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }
 
 export const Radio: React.FC<RadioProps> = ({
@@ -25,7 +25,7 @@ export const Radio: React.FC<RadioProps> = ({
     label,
     name,
     value,
-    onChange,
+    onClick,
 }) => {
     return (
         <Container margin={margin} className={className}>
@@ -37,7 +37,7 @@ export const Radio: React.FC<RadioProps> = ({
                     checked={isChecked}
                     value={value}
                     name={name}
-                    onChange={onChange}
+                    onClick={onClick}
                 />
                 {label}
             </Label>

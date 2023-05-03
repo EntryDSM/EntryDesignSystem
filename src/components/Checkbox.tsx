@@ -12,7 +12,7 @@ interface CheckboxProps extends marginCssType {
     label: string;
     name: string;
     value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -23,7 +23,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     label,
     name,
     value,
-    onChange,
+    onClick,
 }) => {
     return (
         <Label margin={margin} className={className}>
@@ -33,7 +33,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 color={color}
                 name={name}
                 value={value}
-                onChange={onChange}
+                onClick={(e) => onClick(e)}
             />
             {label}
         </Label>
