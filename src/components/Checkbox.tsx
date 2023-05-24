@@ -29,7 +29,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         <Label margin={margin} className={className}>
             <Box
                 type="checkbox"
-                checked={isChecked}
+                defaultChecked={isChecked}
                 color={color}
                 name={name}
                 value={value}

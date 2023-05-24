@@ -34,7 +34,7 @@ export const Radio: React.FC<RadioProps> = ({
                 <Input
                     type="radio"
                     color={color}
-                    checked={isChecked}
+                    defaultChecked={isChecked}
                     value={value}
                     name={name}
                     onClick={onClick}
