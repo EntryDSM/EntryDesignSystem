@@ -10,3 +10,4 @@ export * from './components/Textarea';
 export * from './components/Icon';
 export * from './style/StyledProvider';
 export * from './components/Text';
+export * from './components/Stack';
