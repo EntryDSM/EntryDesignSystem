@@ -5,27 +5,29 @@ import { black100, black200, black300, black400, black900 } from '../style/color
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { Icon } from './Icon';
 
-interface DropdownProps extends marginCssType {
+interface DropdownProps<T> extends marginCssType {
     className?: string;
     width: number;
     unit?: string;
     disabled?: boolean;
-    options: string[];
-    onChange: (data: string) => void;
+    options: T[];
+    onChange: (data: T) => void;
+    value?: T;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({
+export const Dropdown = <T extends string>({
     className,
     width,
     unit,
     disabled = false,
     options,
+    value,
     /** onChange는 option에서 선택된 text값을 반화만 하기 때문에 setState만 넣으셔도 됩니다. */
     onChange,
     margin,
-}) => {
+}: DropdownProps<T>) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [data, setData] = useState<string>(options[0]);
+    const [data, setData] = useState<string>(value || options[0]);
     const outsideRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         function handleClickOutside(event: any) {
