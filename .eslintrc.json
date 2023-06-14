@@ -10,8 +10,7 @@
         "plugin:react/recommended",
         "plugin:prettier/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:storybook/recommended",
-        "prettier"
+        "plugin:storybook/recommended"
     ],
     "overrides": [],
     "parser": "@typescript-eslint/parser",
@@ -21,6 +20,16 @@
     },
     "plugins": ["react", "@typescript-eslint", "prettier", "react-hooks"],
     "rules": {
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+              "devDependencies": [
+                "**/*.stories.*",
+                "**/.storybook/**/*.*"
+              ],
+              "peerDependencies": true
+            }
+          ],
         "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
         "@typescript-eslint/no-empty-interface": "off",

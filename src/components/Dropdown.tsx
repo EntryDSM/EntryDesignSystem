@@ -52,12 +52,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
                     </CheckSvg>
                 </Selector>
                 {unit}
-            </DropdownContainer>
-            {isOpen && options && (
-                <Options width={width}>
-                    {options
-                        .filter((item) => data !== item)
-                        .map((label, index) => (
+                {isOpen && options && (
+                    <Options width={width}>
+                        {options.map((label, index) => (
                             <OptionWrapper key={label}>
                                 <Option
                                     width={width}
@@ -71,13 +68,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
                                 {index !== options.length - 2 && <OptionLine />}
                             </OptionWrapper>
                         ))}
-                </Options>
-            )}
+                    </Options>
+                )}
+            </DropdownContainer>
         </Container>
     );
 };
 
 const Container = styled.div<{ margin?: marginType | marginType[] }>`
+    display: inline-flex;
     ${({ margin }) => marginToCss({ margin })};
     height: 42px;
     z-index: 99;
@@ -91,6 +90,7 @@ const DropdownContainer = styled.div`
     font-weight: 400;
     color: ${black900};
     z-index: 99;
+    position: relative;
 `;
 
 const Selector = styled.div<{ width: number; disabled?: boolean }>`
@@ -136,7 +136,7 @@ const CheckSvg = styled.div<{ isOpen: boolean }>`
 `;
 
 const Options = styled.div<{ width: number }>`
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     width: ${({ width }) => width}px;
@@ -144,8 +144,8 @@ const Options = styled.div<{ width: number }>`
     background-color: white;
     border: 1px solid ${black400};
     border-radius: 5px;
-    margin-top: 4px;
     overflow: scroll;
+    top: 42px;
     z-index: 100;
 `;
 
