@@ -23,13 +23,10 @@
         "import/no-extraneous-dependencies": [
             "error",
             {
-              "devDependencies": [
-                "**/*.stories.*",
-                "**/.storybook/**/*.*"
-              ],
-              "peerDependencies": true
+                "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*"],
+                "peerDependencies": true
             }
-          ],
+        ],
         "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
         "@typescript-eslint/no-empty-interface": "off",

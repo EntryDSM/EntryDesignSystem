@@ -92,6 +92,8 @@ const InputWrapper = styled.div<{ width: number | '100%' }>`
 
 const InputBox = styled.input<{ unit?: string; icon?: IconType }>`
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 42px;
     border: 1px solid ${black400};
