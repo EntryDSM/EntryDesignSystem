@@ -27,7 +27,7 @@ export const Textarea: React.FC<InputProps> = ({
 }) => {
     const [totalText, setTotalText] = useState<number>(0);
     const totalOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setTotalText(e.target.value.length);
+        setTotalText(value.length);
         onChange(e);
     };
     return (
