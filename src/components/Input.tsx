@@ -20,6 +20,7 @@ interface InputType extends marginCssType {
     value?: string | number;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     name?: string;
+    onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputType> = ({
@@ -34,6 +35,7 @@ export const Input: React.FC<InputType> = ({
     onChange,
     value,
     name,
+    onKeyDown,
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
@@ -49,6 +51,7 @@ export const Input: React.FC<InputType> = ({
                         value={value}
                         type={(isOpen && 'text') || type}
                         placeholder={placeholder}
+                        onKeyDown={onKeyDown}
                     />
                     {type === 'password' && (
                         <UnitText onClick={() => setIsOpen(!isOpen)}>
