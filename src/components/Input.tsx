@@ -7,37 +7,42 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { theme } from '../style';
 import { Icon, IconType } from './Icon';
 
-type inputType = 'text' | 'password' | 'number';
+type inputType = 'text' | 'password' | 'number' | 'tel';
 
 interface InputType extends marginCssType {
     className?: string;
+    name?: string;
     type: inputType;
-    placeholder: string;
     width: number | '100%';
+    label?: string;
     unit?: string;
     icon?: IconType;
-    label?: string;
     value?: string | number;
+    maxLength?: number;
+    placeholder: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    name?: string;
     onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputType> = ({
     className,
-    label,
+    name,
     type,
-    placeholder = 'Placeholder',
     width = 250,
+    label,
     unit,
     icon,
-    margin,
-    onChange,
     value,
-    name,
+    maxLength,
+    placeholder = 'Placeholder',
+    onChange,
     onKeyDown,
+    margin,
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const telephoneNumber = String(value)
+        .replace(/[^0-9]/g, '')
+        .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
     return (
         <Container margin={margin} label={label} className={className}>
             <InputLabel>
@@ -48,10 +53,11 @@ export const Input: React.FC<InputType> = ({
                         icon={icon}
                         name={name}
                         onChange={onChange}
-                        value={value}
-                        type={(isOpen && 'text') || type}
+                        value={type === 'tel' ? telephoneNumber : value}
+                        type={(type === 'tel' && 'text') || (isOpen && 'text') || type}
                         placeholder={placeholder}
                         onKeyDown={onKeyDown}
+                        maxLength={maxLength}
                     />
                     {type === 'password' && (
                         <UnitText onClick={() => setIsOpen(!isOpen)}>
@@ -111,6 +117,11 @@ const InputBox = styled.input<{ unit?: string; icon?: IconType }>`
     &::placeholder {
         color: ${black400};
         font-size: 16px;
+    }
+    &::-webkit-inner-spin-button {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
     }
 `;
 
