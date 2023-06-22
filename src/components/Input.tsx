@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Visible from '../style/icon/Visible';
 import NotVisible from '../style/icon/NotVisible';
@@ -20,6 +20,7 @@ interface InputType extends marginCssType {
     value?: string | number;
     maxLength?: number;
     placeholder: string;
+    disabled?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
@@ -35,14 +36,20 @@ export const Input: React.FC<InputType> = ({
     value,
     maxLength,
     placeholder = 'Placeholder',
+    disabled,
     onChange,
     onKeyDown,
     margin,
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const telephoneNumber = String(value)
-        .replace(/[^0-9]/g, '')
-        .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+    const [telephoneNumber, setTelephoneNumber] = useState<string>('');
+    useEffect(() => {
+        setTelephoneNumber(
+            String(value)
+                .replace(/[^0-9]/g, '')
+                .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`),
+        );
+    }, [value]);
     return (
         <Container margin={margin} label={label} className={className}>
             <InputLabel>
@@ -56,6 +63,7 @@ export const Input: React.FC<InputType> = ({
                         value={type === 'tel' ? telephoneNumber : value}
                         type={(type === 'tel' && 'text') || (isOpen && 'text') || type}
                         placeholder={placeholder}
+                        disabled={disabled}
                         onKeyDown={onKeyDown}
                         maxLength={maxLength}
                     />
@@ -117,6 +125,10 @@ const InputBox = styled.input<{ unit?: string; icon?: IconType }>`
     &::placeholder {
         color: ${black400};
         font-size: 16px;
+    }
+    &:disabled {
+        cursor: not-allowed;
+        background-color: ${theme.color.black100};
     }
     &::-webkit-inner-spin-button {
         appearance: none;
