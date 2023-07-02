@@ -17,6 +17,7 @@ export interface StackProps extends marginCssType {
     gap?: number;
     wrap?: WrapType;
     children?: ReactNode;
+    style?: React.CSSProperties;
 }
 
 export const Stack = ({
@@ -29,6 +30,7 @@ export const Stack = ({
     margin,
     wrap,
     children,
+    style,
 }: StackProps) => {
     return (
         <Container
@@ -39,7 +41,8 @@ export const Stack = ({
             justify={justify}
             gap={gap}
             wrap={wrap}
-            margin={margin}>
+            margin={margin}
+            style={style}>
             {children}
         </Container>
     );
@@ -47,7 +50,7 @@ export const Stack = ({
 
 const Container = styled.div<StackProps>`
     display: flex;
-    width: ${({ width }) => width}px;
+    width: ${({ width }) => (width ? `${width}px` : `100%`)};
     height: ${({ height }) => height}px;
     flex-direction: ${({ direction }) => direction};
     align-items: ${({ align }) => align};
