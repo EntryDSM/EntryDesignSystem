@@ -32,6 +32,7 @@ interface ButtonProps extends marginCssType {
     kind?: kindType;
     /** delete 쓸때 무조건 color랑 kind를 둘다 delete로 설정하세요. */
     color?: colorType;
+    width?: number | 'auto';
     children?: ReactNode;
     disabled?: boolean;
     icon?: IconType;
@@ -44,6 +45,7 @@ export const Button: React.FC<ButtonProps> = ({
     className,
     kind = 'contained',
     color = 'black',
+    width = 'auto',
     disabled = false,
     children,
     onClick,
@@ -59,7 +61,8 @@ export const Button: React.FC<ButtonProps> = ({
             color={color}
             cursor={cursor ?? 'pointer'}
             margin={margin ?? [0, 0]}
-            disabled={disabled}>
+            disabled={disabled}
+            width={width}>
             {icon && (
                 <Icon
                     icon={icon}
@@ -80,10 +83,11 @@ const Wrapper = styled.button<
 >`
     cursor: ${({ cursor, disabled }) => (disabled ? 'no-drop' : cursor)};
     width: ${({ kind }) => (kind[0] === 'icon' ? '42px' : 'auto')};
+    width: ${({ width }) => (width !== 'auto' ? `${width}px` : width)};
     height: 42px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center
     align-items: center;
     padding: 11px 12px;
     border: none;
