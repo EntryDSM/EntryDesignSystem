@@ -83,7 +83,7 @@ const Wrapper = styled.button<
     height: 42px;
     display: flex;
     flex-direction: row;
-    justify-content: center
+    justify-content: center;
     align-items: center;
     padding: 11px 12px;
     border: none;
