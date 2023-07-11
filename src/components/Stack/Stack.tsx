@@ -50,7 +50,7 @@ export const Stack = ({
 
 const Container = styled.div<StackProps>`
     display: flex;
-    width: ${({ width }) => (width ? `${width}px` : `100%`)};
+    width: ${({ width }) => (width ? `${width}px` : 'auto')};
     height: ${({ height }) => height}px;
     flex-direction: ${({ direction }) => direction};
     align-items: ${({ align }) => align};
