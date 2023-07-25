@@ -30,16 +30,16 @@ const Container = styled.div<SkeletonType>`
     border-radius: ${(props) => props.rounded}px;
     animation: skeleton 2s 0s infinite ease-in-out alternate;
     ${({ margin }) => marginToCss({ margin })};
-    background-color: ${theme.color.black100};
+    background-color: ${theme.color.black200};
     @keyframes skeleton {
         0% {
-            background: ${theme.color.black100};
+            background: ${theme.color.black200};
         }
         40% {
             background: ${theme.color.black50};
         }
         100% {
-            background: ${theme.color.black100};
+            background: ${theme.color.black200};
         }
     }
 `;
