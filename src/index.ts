@@ -11,3 +11,4 @@ export * from './components/Icon';
 export * from './style/StyledProvider';
 export * from './components/Text';
 export * from './components/Stack';
+export * from './components/Skeleton';
