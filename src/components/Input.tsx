@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Visible from '../style/icon/Visible';
 import NotVisible from '../style/icon/NotVisible';
@@ -9,7 +9,7 @@ import { Icon, IconType } from './Icon';
 
 type inputType = 'text' | 'password' | 'number' | 'tel';
 
-interface InputType extends marginCssType {
+interface InputType extends marginCssType, HTMLAttributes<HTMLInputElement> {
     className?: string;
     name?: string;
     type: inputType;
@@ -22,6 +22,7 @@ interface InputType extends marginCssType {
     placeholder: string;
     disabled?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    clickIcon?: () => void;
     onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
@@ -40,6 +41,8 @@ export const Input: React.FC<InputType> = ({
     onChange,
     onKeyDown,
     margin,
+    clickIcon,
+    ...props
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [telephoneNumber, setTelephoneNumber] = useState<string>('');
@@ -66,6 +69,7 @@ export const Input: React.FC<InputType> = ({
                         disabled={disabled}
                         onKeyDown={onKeyDown}
                         maxLength={maxLength}
+                        {...props}
                     />
                     {type === 'password' && (
                         <UnitText onClick={() => setIsOpen(!isOpen)}>
@@ -75,7 +79,13 @@ export const Input: React.FC<InputType> = ({
                     {unit && <UnitText>{unit}</UnitText>}
                     {icon && (
                         <UnitText>
-                            <Icon icon={icon} color="black400" size={20} />
+                            <Icon
+                                onClick={clickIcon}
+                                icon={icon}
+                                color="black400"
+                                size={20}
+                                cursor="pointer"
+                            />
                         </UnitText>
                     )}
                 </InputWrapper>
