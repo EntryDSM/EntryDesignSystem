@@ -31,6 +31,8 @@ import SignOut from './icon/SignOut';
 import Stopwatch from './icon/Stopwatch';
 import UpwardArrow from './icon/UpwardArrow';
 import Visible from './icon/Visible';
+import OutlinedStar from './icon/OutlinedStar';
+import SolidStar from './icon/SolidStar';
 
 export const icons = {
     Account: <Account />,
@@ -66,4 +68,6 @@ export const icons = {
     Stopwatch: <Stopwatch />,
     UpwardArrow: <UpwardArrow />,
     Visible: <Visible />,
+    OutlinedStar: <OutlinedStar />,
+    SolidStar: <SolidStar />,
 } as const;
