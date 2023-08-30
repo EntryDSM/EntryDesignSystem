@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Icon, IconType } from './Icon';
 import * as F from '../style/font';
@@ -22,20 +22,19 @@ import {
 import { marginCssType, marginToCss } from '../utils/margin';
 
 type DefaultKindType = 'contained' | 'rounded' | 'outlined' | 'delete';
-type kindType = DefaultKindType | ['icon', DefaultKindType];
+type kindType = DefaultKindType;
 type colorType = 'black' | 'orange' | 'green' | 'delete';
 type ButtonEventType = 'enabled' | 'hover' | 'pressed' | 'disabled';
 
 interface ButtonProps extends marginCssType {
     /** delete 쓸때 무조건 kind랑 color를 둘다 delete로 설정하세요. */
-    /** 만약 아이콘 하나만 쓰는 거라면 kind에 배열 첫번재에 'icon', 2번째에 타입을 써주세요. */
     kind?: kindType;
     /** delete 쓸때 무조건 color랑 kind를 둘다 delete로 설정하세요. */
     color?: colorType;
     children?: ReactNode;
     disabled?: boolean;
     icon?: IconType;
-    cursor?: 'pointer' | 'auto' | 'default';
+    cursor?: CSSProperties['cursor'];
     onClick: () => void;
     className?: string;
 }
@@ -79,7 +78,7 @@ const Wrapper = styled.button<
     Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon' | 'className'>>
 >`
     cursor: ${({ cursor, disabled }) => (disabled ? 'no-drop' : cursor)};
-    width: ${({ kind }) => (kind[0] === 'icon' ? '42px' : 'auto')};
+    width: auto;
     height: 42px;
     display: flex;
     flex-direction: row;
@@ -87,17 +86,16 @@ const Wrapper = styled.button<
     align-items: center;
     padding: 11px 12px;
     border: none;
-    border-radius: ${({ kind }) => (kind === 'rounded' || kind[1] === 'rounded' ? 21 : 5)}px;
-    max-width: 1030px;
-    min-width: ${({ kind }) => (kind[0] === 'icon' ? 42 : 80)}px;
+    gap: 3px;
+    border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};
     color: ${({ kind, color, disabled }) =>
-        kind === 'outlined' || kind === 'delete' || kind[1] === 'outlined' || kind[1] === 'delete'
+        kind === 'outlined' || kind === 'delete'
             ? colorGenerator[color][disabled ? 'disabled' : 'enabled']
             : '#FFFFFF'};
     background-color: ${({ kind, color, disabled }) =>
-        kind === 'outlined' || kind === 'delete' || kind[1] === 'outlined' || kind[1] === 'delete'
+        kind === 'outlined' || kind === 'delete'
             ? '#FFFFFF'
             : colorGenerator[color][disabled ? 'disabled' : 'enabled']};
     border: 1px solid
