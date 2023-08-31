@@ -54,6 +54,7 @@ export const Button: React.FC<ButtonProps> = ({
         <Wrapper
             className={className}
             onClick={() => !disabled && onClick()}
+            icon={icon}
             kind={kind}
             color={color}
             cursor={cursor ?? 'pointer'}
@@ -75,7 +76,7 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 const Wrapper = styled.button<
-    Required<Omit<ButtonProps, 'onClick' | 'children' | 'icon' | 'className'>>
+    Required<Omit<ButtonProps, 'onClick' | 'children' | 'className' | 'icon'>> & { icon?: IconType }
 >`
     cursor: ${({ cursor, disabled }) => (disabled ? 'no-drop' : cursor)};
     width: auto;
@@ -87,6 +88,7 @@ const Wrapper = styled.button<
     padding: 11px 12px;
     border: none;
     gap: 3px;
+    min-width: ${({ icon }) => (icon ? 42 : 80)}px;
     border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
     ${F.font.body3};
     ${({ margin }) => marginToCss({ margin })};
