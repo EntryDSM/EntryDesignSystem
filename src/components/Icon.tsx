@@ -1,11 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import * as C from '../style/color';
 import { icons } from '../style/icon';
 import { colorKeyOfType } from '../style/color';
 
-export interface IconProps extends marginCssType {
+export interface IconProps extends marginCssType, HTMLAttributes<SVGSVGElement> {
     className?: string;
     icon: IconType;
     size?: number;

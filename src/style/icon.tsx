@@ -33,6 +33,9 @@ import UpwardArrow from './icon/UpwardArrow';
 import Visible from './icon/Visible';
 import OutlinedStar from './icon/OutlinedStar';
 import SolidStar from './icon/SolidStar';
+import Info from './icon/Info';
+import Warning from './icon/Warning';
+import Error from './icon/Error';
 
 export const icons = {
     Account: <Account />,
@@ -70,4 +73,7 @@ export const icons = {
     Visible: <Visible />,
     OutlinedStar: <OutlinedStar />,
     SolidStar: <SolidStar />,
+    Info: <Info />,
+    Warning: <Warning />,
+    Error: <Error />,
 } as const;
