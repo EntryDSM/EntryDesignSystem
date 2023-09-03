@@ -40,6 +40,10 @@ export const Dropdown = <T extends string>({
             document.removeEventListener('click', handleClickOutside);
         };
     }, [outsideRef]);
+    useEffect(() => {
+        setData(value || options[0]);
+    }, [value]);
+
     return (
         <Container margin={margin} ref={outsideRef}>
             <DropdownContainer>
@@ -67,7 +71,7 @@ export const Dropdown = <T extends string>({
                                     }}>
                                     {label}
                                 </Option>
-                                {index !== options.length - 2 && <OptionLine />}
+                                {index !== options.length - 1 && <OptionLine />}
                             </OptionWrapper>
                         ))}
                     </Options>
