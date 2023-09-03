@@ -77,6 +77,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:18.2.0"],\
             ["react-scripts", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:5.0.1"],\
+            ["react-toastify", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:9.1.3"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
             ["webpack", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:5.75.0"]\
           ],\
@@ -10436,6 +10437,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:18.2.0"],\
             ["react-scripts", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:5.0.1"],\
+            ["react-toastify", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:9.1.3"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
             ["webpack", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:5.75.0"]\
           ],\
@@ -28217,6 +28219,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "eslint",\
             "react",\
             "typescript"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-toastify", [\
+        ["npm:9.1.3", {\
+          "packageLocation": "./.yarn/cache/react-toastify-npm-9.1.3-2f82dd0b41-e8bd92c5cb.zip/node_modules/react-toastify/",\
+          "packageDependencies": [\
+            ["react-toastify", "npm:9.1.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:9.1.3", {\
+          "packageLocation": "./.yarn/__virtual__/react-toastify-virtual-814e5f6c19/0/cache/react-toastify-npm-9.1.3-2f82dd0b41-e8bd92c5cb.zip/node_modules/react-toastify/",\
+          "packageDependencies": [\
+            ["react-toastify", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:9.1.3"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["@types/react-dom", "npm:18.0.10"],\
+            ["clsx", "npm:1.2.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:5cf071fbf880aef41a2951b153695ffc3abaf82a23032720ee41418deb80b09fd461133c558fa5de149ee94e52c30f2c5ef70f7c026d31882c6fec58e2e55880#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
