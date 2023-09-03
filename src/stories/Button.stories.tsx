@@ -30,9 +30,9 @@ WithIcon.args = {
     icon: 'Check',
 };
 
-export const Deletee = Template.bind({});
+export const Delete = Template.bind({});
 
-Deletee.args = {
+Delete.args = {
     kind: 'delete',
     children: 'button',
 };

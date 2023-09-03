@@ -12,3 +12,5 @@ export * from './style/StyledProvider';
 export * from './components/Text';
 export * from './components/Stack';
 export * from './components/Skeleton';
+export * from './components/ToastContainer';
+export * from './components/Toast';
