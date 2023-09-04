@@ -36,6 +36,7 @@ import SolidStar from './icon/SolidStar';
 import Info from './icon/Info';
 import Warning from './icon/Warning';
 import Error from './icon/Error';
+import Upload from './icon/Upload';
 
 export const icons = {
     Account: <Account />,
@@ -76,4 +77,5 @@ export const icons = {
     Info: <Info />,
     Warning: <Warning />,
     Error: <Error />,
+    Upload: <Upload />,
 } as const;
