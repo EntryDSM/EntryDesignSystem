@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { TextareaHTMLAttributes, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { black400, black900, focus } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
-interface InputProps extends marginCssType {
+interface InputProps extends marginCssType, TextareaHTMLAttributes<HTMLTextAreaElement> {
     className?: string;
     placeholder: string;
     width: number | '100%';
     label?: string;
     limit: number;
-    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     value: string;
-    name?: string;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const Textarea: React.FC<InputProps> = ({
@@ -21,15 +20,20 @@ export const Textarea: React.FC<InputProps> = ({
     width = 60,
     limit = 300,
     onChange,
-    value,
     margin,
-    name,
+    value,
+    ...props
 }) => {
     const [totalText, setTotalText] = useState<number>(0);
     const totalOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setTotalText(value?.length);
         onChange(e);
     };
+
+    useEffect(() => {
+        setTotalText(value?.length);
+    }, [value]);
+
     return (
         <Container margin={margin} width={width} className={className}>
             <Label>
@@ -40,7 +44,7 @@ export const Textarea: React.FC<InputProps> = ({
                     </TextCount>
                 </InfoLabel>
                 <TextBox
-                    name={name}
+                    {...props}
                     width={width}
                     placeholder={placeholder}
                     onChange={totalOnChange}
