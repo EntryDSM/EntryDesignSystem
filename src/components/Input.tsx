@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useEffect, useState } from 'react';
+import React, { HTMLAttributes, InputHTMLAttributes, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Visible from '../style/icon/Visible';
 import NotVisible from '../style/icon/NotVisible';
@@ -9,37 +9,25 @@ import { Icon, IconType } from './Icon';
 
 type inputType = 'text' | 'password' | 'number' | 'tel';
 
-interface InputType extends marginCssType, HTMLAttributes<HTMLInputElement> {
+interface InputType extends marginCssType, InputHTMLAttributes<HTMLInputElement> {
     className?: string;
-    name?: string;
     type: inputType;
     width: number | '100%';
     label?: string;
     unit?: string;
     icon?: IconType;
     value?: string | number;
-    maxLength?: number;
-    placeholder: string;
-    disabled?: boolean;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     clickIcon?: () => void;
-    onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputType> = ({
     className,
-    name,
     type,
     width = 250,
     label,
     unit,
     icon,
     value,
-    maxLength,
-    placeholder = 'Placeholder',
-    disabled,
-    onChange,
-    onKeyDown,
     margin,
     clickIcon,
     ...props
@@ -61,14 +49,8 @@ export const Input: React.FC<InputType> = ({
                     <InputBox
                         unit={unit}
                         icon={icon}
-                        name={name}
-                        onChange={onChange}
                         value={type === 'tel' ? telephoneNumber : value}
                         type={(type === 'tel' && 'text') || (isOpen && 'text') || type}
-                        placeholder={placeholder}
-                        disabled={disabled}
-                        onKeyDown={onKeyDown}
-                        maxLength={maxLength}
                         {...props}
                     />
                     {type === 'password' && (
