@@ -10,7 +10,6 @@ export interface TextAreaProps extends marginCssType, TextareaHTMLAttributes<HTM
     label?: string;
     limit: number;
     value: string;
-    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const Textarea: React.FC<TextAreaProps> = ({
@@ -19,16 +18,11 @@ export const Textarea: React.FC<TextAreaProps> = ({
     placeholder = 'Placeholder',
     width = 60,
     limit = 300,
-    onChange,
     margin,
     value,
     ...props
 }) => {
     const [totalText, setTotalText] = useState<number>(0);
-    const totalOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setTotalText(value?.length);
-        onChange(e);
-    };
 
     useEffect(() => {
         setTotalText(value?.length);
@@ -44,12 +38,11 @@ export const Textarea: React.FC<TextAreaProps> = ({
                     </TextCount>
                 </InfoLabel>
                 <TextBox
-                    {...props}
                     width={width}
                     placeholder={placeholder}
-                    onChange={totalOnChange}
-                    value={value}
                     maxLength={limit}
+                    value={value}
+                    {...props}
                 />
             </Label>
         </Container>
