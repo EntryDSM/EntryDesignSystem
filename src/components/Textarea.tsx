@@ -8,7 +8,6 @@ export interface TextAreaProps extends marginCssType, TextareaHTMLAttributes<HTM
     placeholder: string;
     width: number | '100%';
     label?: string;
-    limit: number;
     value: string;
 }
 
@@ -17,7 +16,7 @@ export const Textarea: React.FC<TextAreaProps> = ({
     label = 'title',
     placeholder = 'Placeholder',
     width = 60,
-    limit = 300,
+    maxLength,
     margin,
     value,
     ...props
@@ -34,13 +33,13 @@ export const Textarea: React.FC<TextAreaProps> = ({
                 <InfoLabel width={width}>
                     {label}
                     <TextCount>
-                        {totalText}/{limit}
+                        {totalText}/{maxLength}
                     </TextCount>
                 </InfoLabel>
                 <TextBox
                     width={width}
                     placeholder={placeholder}
-                    maxLength={limit}
+                    maxLength={maxLength}
                     value={value}
                     {...props}
                 />
