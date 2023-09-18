@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { black400, black900, focus } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
-interface InputProps extends marginCssType, TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps extends marginCssType, TextareaHTMLAttributes<HTMLTextAreaElement> {
     className?: string;
     placeholder: string;
     width: number | '100%';
@@ -13,7 +13,7 @@ interface InputProps extends marginCssType, TextareaHTMLAttributes<HTMLTextAreaE
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const Textarea: React.FC<InputProps> = ({
+export const Textarea: React.FC<TextAreaProps> = ({
     className,
     label = 'title',
     placeholder = 'Placeholder',

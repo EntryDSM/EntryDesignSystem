@@ -5,7 +5,7 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 type colorType = 'orange' | 'green';
 
-interface CheckboxProps extends marginCssType {
+export interface CheckboxProps extends marginCssType {
     className?: string;
     color?: colorType;
     isChecked?: boolean;

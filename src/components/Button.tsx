@@ -26,7 +26,7 @@ type kindType = DefaultKindType;
 type colorType = 'black' | 'orange' | 'green' | 'delete';
 type ButtonEventType = 'enabled' | 'hover' | 'pressed' | 'disabled';
 
-interface ButtonProps extends marginCssType {
+export interface ButtonProps extends marginCssType {
     /** delete 쓸때 무조건 kind랑 color를 둘다 delete로 설정하세요. */
     kind?: kindType;
     /** delete 쓸때 무조건 color랑 kind를 둘다 delete로 설정하세요. */

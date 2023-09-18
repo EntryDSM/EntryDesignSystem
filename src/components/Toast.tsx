@@ -2,7 +2,7 @@ import { toast, Flip, TypeOptions, ToastOptions } from 'react-toastify';
 import { Icon } from './Icon';
 import { theme } from '../style';
 
-interface ToastProps extends ToastOptions {
+export interface ToastProps extends ToastOptions {
     type: Exclude<TypeOptions, 'default'>;
 }
 

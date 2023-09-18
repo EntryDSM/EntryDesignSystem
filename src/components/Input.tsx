@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, InputHTMLAttributes, useEffect, useState } from 'react';
+import React, { InputHTMLAttributes, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Visible from '../style/icon/Visible';
 import NotVisible from '../style/icon/NotVisible';
@@ -9,7 +9,7 @@ import { Icon, IconType } from './Icon';
 
 type inputType = 'text' | 'password' | 'number' | 'tel';
 
-interface InputType extends marginCssType, InputHTMLAttributes<HTMLInputElement> {
+export interface InputType extends marginCssType, InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     type: inputType;
     width: number | '100%';

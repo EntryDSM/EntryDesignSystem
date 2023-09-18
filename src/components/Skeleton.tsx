@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { marginCssType, marginToCss } from '../utils/margin';
 import { theme } from '../style';
 
-interface SkeletonType extends marginCssType {
+export interface SkeletonType extends marginCssType {
     width?: number;
     height?: number;
     isLoaded?: boolean;

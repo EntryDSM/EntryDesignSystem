@@ -5,7 +5,7 @@ import { fontKeyOfType } from 'style/font';
 import { marginCssType, marginToCss } from '../utils/margin';
 import { theme } from '../style/index';
 
-interface TextProps extends marginCssType, HTMLAttributes<HTMLDivElement> {
+export interface TextProps extends marginCssType, HTMLAttributes<HTMLDivElement> {
     className?: string;
     children?: ReactNode;
     color: colorKeyOfType;

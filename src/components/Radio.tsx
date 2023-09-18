@@ -5,7 +5,7 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 type colorType = 'orange' | 'green';
 
-interface RadioProps extends marginCssType, InputHTMLAttributes<HTMLInputElement> {
+export interface RadioProps extends marginCssType, InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     title?: string;
     color?: colorType;

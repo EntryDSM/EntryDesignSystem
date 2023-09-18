@@ -5,7 +5,7 @@ import { marginCssType, marginToCss, marginType } from '../utils/margin';
 
 type colorType = 'orange' | 'green';
 
-interface SwitchProps extends marginCssType {
+export interface SwitchProps extends marginCssType {
     isClick: boolean;
     color: colorType;
     onClick: () => void;

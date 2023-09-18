@@ -5,7 +5,7 @@ import { black100, black200, black300, black400, black900 } from '../style/color
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
 import { Icon } from './Icon';
 
-interface DropdownProps<T> extends marginCssType {
+export interface DropdownProps<T> extends marginCssType {
     className?: string;
     width: number;
     unit?: string;
