@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { black50, black500, orange400, orange500, green300, green500 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
@@ -9,7 +9,6 @@ export interface RadioProps extends marginCssType, InputHTMLAttributes<HTMLInput
     className?: string;
     title?: string;
     color?: colorType;
-    isChecked: boolean;
     label: string;
 }
 
@@ -18,7 +17,6 @@ export const Radio: React.FC<RadioProps> = ({
     className,
     title,
     color = 'orange',
-    isChecked,
     label,
     ...props
 }) => {
@@ -26,7 +24,7 @@ export const Radio: React.FC<RadioProps> = ({
         <Container margin={margin} className={className}>
             {title && <Title>{title}</Title>}
             <Label>
-                <Input type="radio" color={color} defaultChecked={isChecked} {...props} />
+                <Input type="radio" color={color} {...props} />
                 {label}
             </Label>
         </Container>
