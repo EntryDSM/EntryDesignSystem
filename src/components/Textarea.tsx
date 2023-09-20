@@ -33,7 +33,7 @@ export const Textarea: React.FC<TextAreaProps> = ({
                 <InfoLabel width={width}>
                     {label}
                     <TextCount>
-                        {totalText}/{maxLength}
+                        {totalText || 0}/{maxLength}
                     </TextCount>
                 </InfoLabel>
                 <TextBox
