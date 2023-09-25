@@ -40,6 +40,11 @@ const style = css`
         text-decoration: none;
         color: inherit;
     }
+    textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
 `;
 
 export const GlobalStyle = () => {

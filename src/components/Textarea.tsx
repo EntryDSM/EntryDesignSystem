@@ -91,6 +91,7 @@ const TextBox = styled.textarea<{ width: number | '100%' }>`
     font-size: 16px;
     line-height: 19px;
     resize: none;
+    box-sizing: border-box;
     &:focus {
         border-color: ${focus};
     }
