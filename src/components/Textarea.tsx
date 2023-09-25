@@ -80,7 +80,6 @@ const TextCount = styled.span`
 `;
 
 const TextBox = styled.textarea<{ width: number | '100%' }>`
-    position: absolute;
     width: ${({ width }) => (width === '100%' ? '100%' : `${width}rem`)};
     height: 300px;
     border: 1px solid ${black400};
