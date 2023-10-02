@@ -92,7 +92,7 @@ const Wrapper = styled.button<
     gap: 3px;
     min-width: ${({ icon }) => (icon ? 42 : 80)}px;
     border-radius: ${({ kind }) => (kind === 'rounded' ? 21 : 5)}px;
-    ${({ isBig }) => (isBig ? F.font.header2 : F.font.body3)};
+    ${({ isBig }) => (isBig ? F.font.title1 : F.font.body3)};
     ${({ margin }) => marginToCss({ margin })};
     color: ${({ kind, color, disabled }) =>
         kind === 'outlined' || kind === 'delete'
