@@ -37,6 +37,7 @@ export interface ButtonProps extends marginCssType {
     cursor?: CSSProperties['cursor'];
     onClick: () => void;
     className?: string;
+    isBig?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -49,6 +50,7 @@ export const Button: React.FC<ButtonProps> = ({
     margin,
     icon,
     cursor,
+    isBig = false,
 }) => {
     return (
         <Wrapper
@@ -59,6 +61,7 @@ export const Button: React.FC<ButtonProps> = ({
             color={color}
             cursor={cursor ?? 'pointer'}
             margin={margin ?? [0, 0]}
+            isBig={isBig}
             disabled={disabled}>
             {icon && (
                 <Icon
@@ -80,12 +83,12 @@ const Wrapper = styled.button<
 >`
     cursor: ${({ cursor, disabled }) => (disabled ? 'no-drop' : cursor)};
     width: auto;
-    height: 42px;
+
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 11px 12px;
+    padding: ${({ isBig }) => (isBig ? '15px 70px' : '11px 12px')};
     border: none;
     gap: 3px;
     min-width: ${({ icon }) => (icon ? 42 : 80)}px;
