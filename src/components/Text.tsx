@@ -31,7 +31,7 @@ export const Text = ({
     margin,
     width,
     textOverflow,
-    whiteSpace,
+    whiteSpace = 'pre-line',
     ...props
 }: TextProps) => {
     return (
