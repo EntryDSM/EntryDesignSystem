@@ -15,6 +15,8 @@ export interface TextProps extends marginCssType, HTMLAttributes<HTMLDivElement>
     cursor?: CSSProperties['cursor'];
     align?: CSSProperties['alignItems'];
     width?: number;
+    textOverflow?: CSSProperties['textOverflow'];
+    whiteSpace?: CSSProperties['whiteSpace'];
 }
 
 export const Text = ({
@@ -28,6 +30,8 @@ export const Text = ({
     align,
     margin,
     width,
+    textOverflow,
+    whiteSpace,
     ...props
 }: TextProps) => {
     return (
@@ -41,6 +45,8 @@ export const Text = ({
             margin={margin}
             size={size}
             width={width}
+            textOverflow={textOverflow}
+            whiteSpace={whiteSpace}
             {...props}>
             {children}
         </Wrapper>
@@ -57,5 +63,6 @@ const Wrapper = styled.div<TextProps>`
     ${({ margin }) => marginToCss({ margin })};
     width: ${({ width }) => width}px;
     justify-content: ${({ align }) => align};
-    white-space: pre-line;
+    white-space: ${({ whiteSpace }) => whiteSpace};
+    text-overflow: ${({ textOverflow }) => textOverflow};
 `;
