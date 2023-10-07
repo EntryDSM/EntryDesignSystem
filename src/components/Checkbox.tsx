@@ -25,17 +25,17 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     value,
     onClick,
 }) => {
-    const [checked, setChecked] = useState(isChecked);
+    // const [checked, setChecked] = useState(isChecked);
 
-    useEffect(() => {
-        setChecked(isChecked);
-    }, [isChecked]);
+    // useEffect(() => {
+    //     setChecked(isChecked);
+    // }, [isChecked]);
 
     return (
         <Label margin={margin} className={className}>
             <Box
                 type="checkbox"
-                defaultChecked={checked}
+                checked={isChecked}
                 color={color}
                 name={name}
                 value={value}
