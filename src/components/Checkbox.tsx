@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { black50, black500, green500, orange500 } from '../style/color';
 import { marginCssType, marginToCss, marginType } from '../utils/margin';
@@ -25,11 +25,17 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     value,
     onClick,
 }) => {
+    const [checked, setChecked] = useState(isChecked);
+
+    useEffect(() => {
+        setChecked(isChecked);
+    }, [isChecked]);
+
     return (
         <Label margin={margin} className={className}>
             <Box
                 type="checkbox"
-                defaultChecked={isChecked}
+                defaultChecked={checked}
                 color={color}
                 name={name}
                 value={value}
